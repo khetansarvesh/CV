@@ -417,6 +417,11 @@ class DetectorNetwork(nn.Module):
 
 
 
+# def no_grad(func):
+#   def wrapper_nograd(*args, **kwargs):
+#     with t.no_grad():
+#       return func(*args, **kwargs)
+#   return wrapper_nograd
 
 
 # PyTorch implementation of Faster R-CNN training and inference models. Here,

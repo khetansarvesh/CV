@@ -13,7 +13,7 @@ class PreprocessingParams:
   Scaling factor is applied first, followed by standardization with supplied means and standard
   deviations supplied in the order specified by channel_order.
   """
-  channel_order: ChannelOrder
+  channel_order: str
   scaling: float
   means: List[float]
   stds: List[float]

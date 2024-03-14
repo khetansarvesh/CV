@@ -9,6 +9,7 @@
 # up converting proposals into lists at a later stage anyway) but this is how
 # I first thought to implement it and did not encounter a pressing need to
 # change it.
+from CV.Faster_RCNN.util_math import intersection_over_union
 
 import itertools
 from math import sqrt

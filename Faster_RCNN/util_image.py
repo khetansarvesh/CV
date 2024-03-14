@@ -1,6 +1,4 @@
 # Image loading and pre-processing.
-from dataclasses import dataclass
-from enum import Enum
 import imageio
 from PIL import Image
 import numpy as np

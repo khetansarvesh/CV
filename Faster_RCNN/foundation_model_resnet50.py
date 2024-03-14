@@ -1,18 +1,3 @@
-# Backbone base class, for wrapping backbone models that provide feature
-# extraction and pooled feature reduction layers from the classifier
-# stages.
-#
-# The backbone in Faster R-CNN is used in two places:
-#
-#   1. In Stage 1 as the feature extractor. Given an input image, a feature map
-#      is produced that is then passed into both the RPN and detector stages.
-#   2. In Stage 3, the detector, proposal regions are pooled and cropped from
-#      the feature map (to produce RoIs) and fed into the detector layers,
-#      which perform classification and bounding box regression. Each RoI must
-#      first be converted into a linear feature vector. With VGG-16, for
-#      example, the fully-connected layers following the convolutional layers
-#      and preceding the classifier layer, are used to do this.
-
 from math import ceil
 import torch as t
 from torch import nn
@@ -20,44 +5,6 @@ from torch.nn import functional as F
 import torchvision
 
 from util_image import *
-
-
-class Backbone:
-  """
-  Backbone base class. When overriding, ensure all members and methods are
-  defined.
-  """
-  def __init__(self):
-    # Required properties
-    self.feature_map_channels = 0     # feature map channels
-    self.feature_pixels = 0           # feature size in pixels, N: each feature map cell corresponds to an NxN area on original image
-    self.feature_vector_size = 0      # length of linear feature vector after pooling and just before being passed to detector heads
-    self.image_preprocessing_params = PreprocessingParams(channel_order = ChannelOrder.BGR, scaling = 1.0, means = [ 103.939, 116.779, 123.680 ], stds = [ 1, 1, 1 ])
-
-    # Required members
-    self.feature_extractor = None       # nn.Module converting input image (batch_size, channels, width, height) -> (batch_size, feature_map_channels, W, H)
-    self.pool_to_feature_vector = None  # nn.Module converting RoIs (N, feature_map_channels, 7, 7) -> (N, feature_vector_size)
-
-  def compute_feature_map_shape(self, image_shape):
-    """
-    Computes the shape of the feature extractor output given an input image
-    shape. This is used primarily for anchor generation and depends entirely on
-    the architecture of the backbone.
-
-    Parameters
-    ----------
-    image_shape : Tuple[int, int, int]
-      Shape of the input image, (channels, height, width). Only the last two
-      dimensions are relevant, allowing image_shape to be either the shape
-      of a single image or the entire batch.
-
-    Returns
-    -------
-    Tuple[int, int, int]
-      Shape of the feature map produced by the feature extractor,
-      (feature_map_channels, feature_map_height, feature_map_width).
-    """
-    return image_shape[-3:]
 
 class FeatureExtractor(nn.Module):
   def __init__(self, resnet):
@@ -118,6 +65,12 @@ class FeatureExtractor(nn.Module):
       if type(child) == nn.BatchNorm2d:
         self._freeze(layer = child)
 
+
+
+
+
+
+
 class PoolToFeatureVector(nn.Module):
   def __init__(self, resnet):
     super().__init__()
@@ -154,30 +107,57 @@ class PoolToFeatureVector(nn.Module):
       if type(child) == nn.BatchNorm2d:
         self._freeze(layer = child)
 
-class ResNetBackbone(Backbone):
-  def __init__(self):
-    super().__init__()
 
-    # Backbone properties. Image preprocessing parameters are common to all
-    # Torchvision ResNet models and are described in the documentation, e.g.,
+
+
+
+
+
+
+
+
+
+
+# provide feature extraction and pooled feature reduction layers from the classifier stages.
+#
+# The backbone in Faster R-CNN is used in two places:
+#
+#   1. In Stage 1 as the feature extractor. Given an input image, a feature map
+#      is produced that is then passed into both the RPN and detector stages.
+#   2. In Stage 3, the detector, proposal regions are pooled and cropped from
+#      the feature map (to produce RoIs) and fed into the detector layers,
+#      which perform classification and bounding box regression. Each RoI must
+#      first be converted into a linear feature vector. With VGG-16, for
+#      example, the fully-connected layers following the convolutional layers
+#      and preceding the classifier layer, are used to do this.
+
+
+class ResNetBackbone():
+  def __init__(self):
+
+    # Backbone properties. Image preprocessing parameters are common to all Torchvision ResNet models and are described in the documentation, e.g.,
     # https://pytorch.org/vision/stable/models/generated/torchvision.models.resnet50.html#torchvision.models.resnet50
     self.feature_map_channels = 1024  # feature extractor output channels
-    self.feature_pixels = 16          # ResNet feature maps are 1/16th of the original image size, similar to VGG-16 feature extractor
-    self.feature_vector_size = 2048   # linear feature vector size after pooling
+    self.feature_pixels = 16          # ResNet feature maps are 1/16th of the original image size
+    self.feature_vector_size = 2048   # linear feature vector size after pooling # length of linear feature vector after pooling and just before being passed to detector heads
     self.image_preprocessing_params = PreprocessingParams(channel_order = ChannelOrder.RGB, scaling = 1.0 / 255.0, means = [ 0.485, 0.456, 0.406 ], stds = [ 0.229, 0.224, 0.225 ])
 
     # Loading IMAGENET1K_V1 pre-trained weights for Torchvision resnet50 backbone
     resnet = torchvision.models.resnet50(weights = torchvision.models.ResNet50_Weights.IMAGENET1K_V1)
 
-    # Feature extractor: given image data of shape (batch_size, channels, height, width), produces a feature map of shape (batch_size, 1024, ceil(height/16), ceil(width/16))
+    # Feature extractor: given image data of shape (batch_size, channels, width, height), produces a feature map of shape (batch_size, feature_map_channels = 1024, W = ceil(height/16), H = ceil(width/16))
     self.feature_extractor = FeatureExtractor(resnet = resnet)
 
-    # Conversion of pooled features to head input
+    # Conversion of pooled features i.e. RoIs (N, feature_map_channels, 7, 7) to head input i.e. (N, feature_vector_size)
     self.pool_to_feature_vector = PoolToFeatureVector(resnet = resnet)
 
   def compute_feature_map_shape(self, image_shape):
     """
-    Computes feature map shape given input image shape. Unlike VGG-16, ResNet
+    Computes the shape of the feature extractor output given an input image
+    shape. This is used primarily for anchor generation and depends entirely on
+    the architecture of the backbone.
+
+    Unlike VGG-16, ResNet
     convolutional layers use padding and the resultant dimensions are therefore
     not simply an integral division by 16. The calculation here works well
     enough but it is not guaranteed that the simple conversion of feature map
@@ -197,6 +177,8 @@ class ResNetBackbone(Backbone):
       Shape of the feature map produced by the feature extractor,
       (feature_map_channels, feature_map_height, feature_map_width).
     """
+
+
     image_width = image_shape[-1]
     image_height = image_shape[-2]
     return (self.feature_map_channels, ceil(image_height / self.feature_pixels), ceil(image_width / self.feature_pixels))

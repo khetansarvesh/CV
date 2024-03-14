@@ -5,6 +5,7 @@ import numpy as np
 from PIL import Image
 from typing import List
 from typing import Tuple
+import os
 
 @dataclass
 class Box:
@@ -87,8 +88,6 @@ class Dataset:
     cache : bool
       Whether to training samples in memory after first being generated.
     """
-    if not os.path.exists(dir):
-      raise FileNotFoundError("Dataset directory does not exist: %s" % dir)
     self.split = split
     self._dir = dir
     self.class_index_to_name = self._get_classes()

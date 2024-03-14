@@ -14,12 +14,6 @@ def _compute_scale_factor(original_width, original_height, min_dimension_pixels)
   return scale_factor
 
 def _preprocess_vgg16(image_data, preprocessing):
-  if preprocessing.channel_order == ChannelOrder.RGB:
-    pass                                        # already in RGB order
-  elif preprocessing.channel_order == ChannelOrder.BGR:
-    image_data = image_data[:, :, ::-1]         # RGB -> BGR
-  else:
-    raise ValueError("Invalid ChannelOrder value: %s" % str(preprocessing.channel_order))
   image_data[:, :, 0] *= preprocessing.scaling
   image_data[:, :, 1] *= preprocessing.scaling
   image_data[:, :, 2] *= preprocessing.scaling

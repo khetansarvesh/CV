@@ -5,11 +5,6 @@ from torch.nn import functional as F
 import torchvision
 
 from dataclasses import dataclass
-from enum import Enum
-
-class ChannelOrder(Enum):
-  RGB = "RGB"
-  BGR = "BGR"
 
 @dataclass
 class PreprocessingParams:
@@ -157,7 +152,7 @@ class ResNetBackbone():
     self.feature_map_channels = 1024  # feature extractor output channels
     self.feature_pixels = 16          # ResNet feature maps are 1/16th of the original image size
     self.feature_vector_size = 2048   # linear feature vector size after pooling # length of linear feature vector after pooling and just before being passed to detector heads
-    self.image_preprocessing_params = PreprocessingParams(channel_order = ChannelOrder.RGB, scaling = 1.0 / 255.0, means = [ 0.485, 0.456, 0.406 ], stds = [ 0.229, 0.224, 0.225 ])
+    self.image_preprocessing_params = PreprocessingParams(channel_order = "RGB", scaling = 1.0 / 255.0, means = [ 0.485, 0.456, 0.406 ], stds = [ 0.229, 0.224, 0.225 ])
 
     # Loading IMAGENET1K_V1 pre-trained weights for Torchvision resnet50 backbone
     resnet = torchvision.models.resnet50(weights = torchvision.models.ResNet50_Weights.IMAGENET1K_V1)

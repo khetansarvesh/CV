@@ -7,6 +7,8 @@ from typing import List
 from typing import Tuple
 import os
 from pathlib import Path
+import xml.etree.ElementTree as ET
+
 
 @dataclass
 class Box:

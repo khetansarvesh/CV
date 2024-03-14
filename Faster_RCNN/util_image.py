@@ -32,22 +32,6 @@ def _compute_scale_factor(original_width, original_height, min_dimension_pixels)
     scale_factor = min_dimension_pixels / original_width
   return scale_factor
 
-def _preprocess_vgg16(image_data, preprocessing):
-  if preprocessing.channel_order == ChannelOrder.RGB:
-    pass                                        # already in RGB order
-  elif preprocessing.channel_order == ChannelOrder.BGR:
-    image_data = image_data[:, :, ::-1]         # RGB -> BGR
-  else:
-    raise ValueError("Invalid ChannelOrder value: %s" % str(preprocessing.channel_order))
-  image_data[:, :, 0] *= preprocessing.scaling
-  image_data[:, :, 1] *= preprocessing.scaling
-  image_data[:, :, 2] *= preprocessing.scaling
-  image_data[:, :, 0] = (image_data[:, :, 0] - preprocessing.means[0]) / preprocessing.stds[0]
-  image_data[:, :, 1] = (image_data[:, :, 1] - preprocessing.means[1]) / preprocessing.stds[1]
-  image_data[:, :, 2] = (image_data[:, :, 2] - preprocessing.means[2]) / preprocessing.stds[2]
-  image_data = image_data.transpose([2, 0, 1])  # (height,width,3) -> (3,height,width)
-  return image_data.copy()                      # copy required to eliminate negative stride (which Torch doesn't like)
-
 def load_image(url, preprocessing, min_dimension_pixels = None, horizontal_flip = False):
   """
   Loads and preprocesses an image for use with the Faster R-CNN model.

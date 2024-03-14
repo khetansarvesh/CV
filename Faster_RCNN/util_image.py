@@ -6,23 +6,6 @@ from PIL import Image
 import numpy as np
 from typing import List
 
-class ChannelOrder(Enum):
-  RGB = "RGB"
-  BGR = "BGR"
-
-@dataclass
-class PreprocessingParams:
-  """
-  Image preprocessing parameters. Channel order may be either ChannelOrder.RGB or ChannelOrder.BGR.
-  Scaling factor is applied first, followed by standardization with supplied means and standard
-  deviations supplied in the order specified by channel_order.
-  """
-  channel_order: ChannelOrder
-  scaling: float
-  means: List[float]
-  stds: List[float]
-
-
 def _compute_scale_factor(original_width, original_height, min_dimension_pixels):
   if not min_dimension_pixels:
     return 1.0

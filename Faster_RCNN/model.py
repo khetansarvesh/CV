@@ -418,11 +418,11 @@ class DetectorNetwork(nn.Module):
 
 
 
-# def no_grad(func):
-#   def wrapper_nograd(*args, **kwargs):
-#     with t.no_grad():
-#       return func(*args, **kwargs)
-#   return wrapper_nograd
+def no_grad(func):
+  def wrapper_nograd(*args, **kwargs):
+    with t.no_grad():
+      return func(*args, **kwargs)
+  return wrapper_nograd
 
 
 # PyTorch implementation of Faster R-CNN training and inference models. Here,
@@ -532,7 +532,7 @@ class FasterRCNNModel(nn.Module):
 
     return proposals, classes, box_deltas
 
-  # @utils.no_grad
+  @no_grad
   def predict(self, image_data, score_threshold, anchor_map = None, anchor_valid_map = None):
     """
     Performs inference on an image and obtains the final detected boxes.

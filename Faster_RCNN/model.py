@@ -1,4 +1,4 @@
-from CV.Faster_RCNN.util_math import t_convert_deltas_to_boxes, t_intersection_over_union
+from CV.Faster_RCNN.util_math import t_convert_deltas_to_boxes, t_intersection_over_union, convert_deltas_to_boxes
 
 import numpy as np
 import torch as t

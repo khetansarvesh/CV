@@ -4,7 +4,8 @@ from torch import nn
 from torch.nn import functional as F
 import torchvision
 
-from util_image import *
+from dataclasses import dataclass
+from enum import Enum
 
 class ChannelOrder(Enum):
   RGB = "RGB"

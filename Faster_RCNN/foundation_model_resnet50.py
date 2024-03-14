@@ -19,7 +19,7 @@ from torch import nn
 from torch.nn import functional as F
 import torchvision
 
-from ..utils import image
+from util_image import *
 
 
 class Backbone:

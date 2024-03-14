@@ -1,4 +1,5 @@
 from CV.Faster_RCNN.util_math import t_intersection_over_union, convert_deltas_to_boxes, t_convert_deltas_to_boxes
+from CV.Faster_RCNN.util_anchor import generate_anchor_maps
 
 import numpy as np
 import torch as t
@@ -512,7 +513,7 @@ class FasterRCNNModel(nn.Module):
     # reasons) but if they are missing, we compute them on-the-fly here
     if anchor_map is None or anchor_valid_map is None:
       feature_map_shape = self.backbone.compute_feature_map_shape(image_shape = image_shape)
-      anchor_map, anchor_valid_map = anchors.generate_anchor_maps(image_shape = image_shape, feature_map_shape = feature_map_shape, feature_pixels = self.backbone.feature_pixels)
+      anchor_map, anchor_valid_map = generate_anchor_maps(image_shape = image_shape, feature_map_shape = feature_map_shape, feature_pixels = self.backbone.feature_pixels)
 
     # Run each stage
     feature_map = self._stage1_feature_extractor(image_data = image_data)

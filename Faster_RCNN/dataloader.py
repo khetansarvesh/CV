@@ -6,6 +6,7 @@ from PIL import Image
 from typing import List
 from typing import Tuple
 import os
+from pathlib import Path
 
 @dataclass
 class Box:

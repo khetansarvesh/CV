@@ -6,6 +6,22 @@ import torchvision
 
 from util_image import *
 
+class ChannelOrder(Enum):
+  RGB = "RGB"
+  BGR = "BGR"
+
+@dataclass
+class PreprocessingParams:
+  """
+  Image preprocessing parameters. Channel order may be either ChannelOrder.RGB or ChannelOrder.BGR.
+  Scaling factor is applied first, followed by standardization with supplied means and standard
+  deviations supplied in the order specified by channel_order.
+  """
+  channel_order: ChannelOrder
+  scaling: float
+  means: List[float]
+  stds: List[float]
+  
 class FeatureExtractor(nn.Module):
   def __init__(self, resnet):
     super().__init__()

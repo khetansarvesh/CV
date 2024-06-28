@@ -24,7 +24,7 @@ class ResidualBlock(nn.Module):
         else:
             return x + self.block(x)
 
-encoder = nn.Sequential(nn.Conv2d(1, 128, 3, 1, 1),
+residual_encoder = nn.Sequential(nn.Conv2d(1, 128, 3, 1, 1),
 
                               #ResidualBlock(128, 128),
                               #ResidualBlock(128, 128),
@@ -53,7 +53,7 @@ encoder = nn.Sequential(nn.Conv2d(1, 128, 3, 1, 1),
                               nn.Conv2d(512, 256, 3, 1, 1)
                             )
 
-decoder = nn.Sequential(nn.Conv2d(256, 512, 3, 1, 1),
+residual_decoder = nn.Sequential(nn.Conv2d(256, 512, 3, 1, 1),
                               ResidualBlock(512, 512),
                               #ResidualBlock(512, 512),
 

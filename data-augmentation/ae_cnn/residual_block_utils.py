@@ -1,3 +1,6 @@
+import torch
+import torch.nn as nn
+
 class ResidualBlock(nn.Module):
     def __init__(self, in_channels, out_channels):
         super(ResidualBlock, self).__init__()
@@ -21,7 +24,7 @@ class ResidualBlock(nn.Module):
         else:
             return x + self.block(x)
 
-self.encoder = nn.Sequential(nn.Conv2d(1, 128, 3, 1, 1),
+encoder = nn.Sequential(nn.Conv2d(1, 128, 3, 1, 1),
 
                               #ResidualBlock(128, 128),
                               #ResidualBlock(128, 128),
@@ -50,7 +53,7 @@ self.encoder = nn.Sequential(nn.Conv2d(1, 128, 3, 1, 1),
                               nn.Conv2d(512, 256, 3, 1, 1)
                             )
 
-self.decoder = nn.Sequential(nn.Conv2d(256, 512, 3, 1, 1),
+decoder = nn.Sequential(nn.Conv2d(256, 512, 3, 1, 1),
                               ResidualBlock(512, 512),
                               #ResidualBlock(512, 512),
 

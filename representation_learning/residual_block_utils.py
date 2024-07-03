@@ -9,13 +9,7 @@ class ResidualBlock(nn.Module):
 
         # residual block
         self.block = nn.Sequential(
-            #nn.GroupNorm(num_groups=32, num_channels=in_channels, eps=1e-6, affine=True),
-            #nn.ReLU(),
-            #nn.Conv2d(in_channels, out_channels, 3, 1, 1),
             nn.Conv2d(in_channels, out_channels, 3, 1, 1), nn.GroupNorm(num_groups=32, num_channels=out_channels, eps=1e-6, affine=True),nn.ReLU(),
-            #nn.GroupNorm(num_groups=32, num_channels=out_channels, eps=1e-6, affine=True),
-            #nn.ReLU(),
-            #nn.Conv2d(out_channels, out_channels, 3, 1, 1)
             nn.Conv2d(out_channels, out_channels, 3, 1, 1), nn.GroupNorm(num_groups=32, num_channels=out_channels, eps=1e-6, affine=True), nn.ReLU()
         )
         

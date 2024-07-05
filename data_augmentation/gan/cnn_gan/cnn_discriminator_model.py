@@ -13,4 +13,4 @@ class Discriminator(nn.Module):
 
     def forward(self, x):
         out = self.layers(x)
-        return out.reshape(x.size(0))
+        return out #out.reshape(x.size(0))

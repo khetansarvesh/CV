@@ -51,3 +51,53 @@ class VQVAE(nn.Module):
         output = self.decoder(quant_out)
 
         return output, quantize_losses
+
+# class VQGAN(nn.Module):
+#     def __init__(self):
+#         super(VQGAN, self).__init__()
+
+#         self.encoder = nn.Sequential(
+#             nn.Conv2d(1, 16, kernel_size=4, stride=2, padding=1),nn.BatchNorm2d(16),nn.ReLU(),
+#             nn.Conv2d(16, 4, kernel_size=4, stride=2, padding=1),nn.BatchNorm2d(4),nn.ReLU(),
+#             nn.Conv2d(4, 2, kernel_size=1)
+#         )
+
+#         self.embedding = nn.Embedding(num_embeddings = 1024, embedding_dim=2)
+#         self.embedding.weight.data.uniform_(-1.0 / 1024, 1.0 / 1024)
+
+#         self.decoder = nn.Sequential(
+#             nn.Conv2d(2, 4, kernel_size=1),
+#             nn.ConvTranspose2d(4, 16, kernel_size=4, stride=2, padding=1),nn.BatchNorm2d(16),nn.ReLU(),
+#             nn.ConvTranspose2d(16, 1, kernel_size=4, stride=2, padding=1),nn.Tanh(), #no normalization in this layer
+#         )
+
+
+#     def forward(self, imgs):
+
+#         # Encoder
+#         quant_conv_encoded_images = self.encoder(imgs)
+
+#         # Reshaping
+#         z = quant_conv_encoded_images.permute(0, 2, 3, 1).contiguous()
+#         z_flattened = z.view(-1, 2)
+
+#         # Quantization Process
+#         d = torch.sum(z_flattened**2, dim=1, keepdim=True) + torch.sum(self.embedding.weight**2, dim=1) - 2*(torch.matmul(z_flattened, self.embedding.weight.t())) # compute pairwise distance
+#         min_encoding_indices = torch.argmin(d, dim=1) # find index of nearest embedding
+#         z_q = self.embedding(min_encoding_indices).view(z.shape) # select the embedding weights
+
+#         # Quantization Loss Calculation
+#         commitment_loss = torch.mean((z_q.detach() - z)**2)
+#         codebook_loss = torch.mean((z_q - z.detach())**2)
+#         loss = codebook_loss + 0.2*commitment_loss
+
+#         # Ensure straight through gradient
+#         z_q = z + (z_q - z).detach()
+
+#         # Reshaping back to original input shape
+#         z_q = z_q.permute(0, 3, 1, 2)
+
+#         # Decoder
+#         output = self.decoder(z_q)
+
+#         return output, loss

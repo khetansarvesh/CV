@@ -393,25 +393,3 @@ def evaluate_map(args):
         print('AP for class {} = {:.4f}'.format(voc.idx2label[idx],
                                                 all_aps[voc.idx2label[idx]]))
     print('Mean Average Precision : {:.4f}'.format(mean_ap))
-
-
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Arguments for yolov1 inference')
-    parser.add_argument('--config', dest='config_path',
-                        default='config/voc.yaml', type=str)
-    parser.add_argument('--evaluate', dest='evaluate',
-                        default=False, type=bool)
-    parser.add_argument('--infer_samples', dest='infer_samples',
-                        default=True, type=bool)
-    args = parser.parse_args()
-
-    with torch.no_grad():
-        if args.infer_samples:
-            infer(args)
-        else:
-            print('Not Inferring for samples as `infer_samples` argument is False')
-
-        if args.evaluate:
-            evaluate_map(args)
-        else:
-            print('Not Evaluating as `evaluate` argument is False')

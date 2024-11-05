@@ -99,7 +99,6 @@ class VOCDataset(Dataset):
 
         # creating a vice versa dictionary i.e. 0 : 'person'
         self.idx2label = {idx: classes[idx] for idx in range(len(classes))}
-        print(self.idx2label)
 
         # getting the VOC Dataset images
         self.images_info = load_images_and_anns(self.label2idx, self.fname, self.split)

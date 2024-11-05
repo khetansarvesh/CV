@@ -6,7 +6,7 @@ from torch.utils.data.dataset import Dataset
 import xml.etree.ElementTree as ET
 
 
-def load_images_and_anns(im_sets, label2idx, ann_fname, split):
+def load_images_and_anns(label2idx, ann_fname, split):
     r"""
     Method to get the xml files and for each file
     get all the objects and their ground truth detection
@@ -19,6 +19,7 @@ def load_images_and_anns(im_sets, label2idx, ann_fname, split):
     """
     im_infos = []
     ims = []
+    im_sets = ['data/VOC2007', 'data/VOC2012'] #since we will be using VOC dataset
 
     for im_set in im_sets:
         im_names = []
@@ -77,19 +78,49 @@ def load_images_and_anns(im_sets, label2idx, ann_fname, split):
 
 
 class VOCDataset(Dataset):
-    def __init__(self, split, im_sets, im_size=448, S=7, B=2, C=20):
-        self.split = split
-        # Imagesets for this dataset instance (VOC2007/VOC2007+VOC2012/VOC2007-test)
-        self.im_sets = im_sets
-        self.fname = 'trainval' if self.split == 'train' else 'test'
-        self.im_size = im_size
-        # Grid size, B and C parameter for target setting
-        self.S = S
-        self.B = B
-        self.C = C
+    def __init__(self, split):
 
-        # Train and test transformations
-        self.transforms = {
+        # to decide if we are working with training data or testing data
+        self.split = split
+        self.fname = 'trainval' if self.split == 'train' else 'test'
+
+        self.im_size = 448 # img size is 448*448
+        self.S = 7 # 7*7 grid size
+        self.B = 2 # no of bounding box prediction per grid
+
+        self.C = 20 # no of classes
+        classes = ['person', 'bird', 'cat', 'cow', 'dog', 'horse', 'sheep',
+            'aeroplane', 'bicycle', 'boat', 'bus', 'car', 'motorbike', 'train',
+            'bottle', 'chair', 'diningtable', 'pottedplant', 'sofa', 'tvmonitor'] # defining all the 20 classes present in the VOC dataset
+        classes = sorted(classes)
+
+        # creating a dictionary to map class name to index eg 'person' : 0
+        self.label2idx = {classes[idx]: idx for idx in range(len(classes))}
+
+        # creating a vice versa dictionary i.e. 0 : 'person'
+        self.idx2label = {idx: classes[idx] for idx in range(len(classes))}
+        print(self.idx2label)
+
+        # getting the VOC Dataset images
+        self.images_info = load_images_and_anns(self.label2idx, self.fname, self.split)
+    
+    def __len__(self):
+        return len(self.images_info)
+    
+    def __getitem__(self, index):
+        im_info = self.images_info[index]
+        im = cv2.imread(im_info['filename'])
+        im = cv2.cvtColor(im, cv2.COLOR_BGR2RGB)
+
+        # Get annotations for this image
+        bboxes = [detection['bbox'] for detection in im_info['detections']]
+        labels = [detection['label'] for detection in im_info['detections']]
+        difficult = [detection['difficult'] for detection in im_info['detections']]
+
+        # Transform Image and ann according to augmentations list
+        transforms = {
+
+            # performing transformations on train dataset
             'train': albu.Compose([
                 albu.HorizontalFlip(p=0.5),
                 albu.Affine(
@@ -108,44 +139,16 @@ class VOCDataset(Dataset):
                 albu.Resize(self.im_size, self.im_size)],
                 bbox_params=albu.BboxParams(format='pascal_voc',
                                             label_fields=['labels'])),
+
+
+            # performing transformations on test datset
             'test': albu.Compose([
                 albu.Resize(self.im_size, self.im_size),
                 ],
                 bbox_params=albu.BboxParams(format='pascal_voc',
                                             label_fields=['labels']))
         }
-
-        classes = [
-            'person', 'bird', 'cat', 'cow', 'dog', 'horse', 'sheep',
-            'aeroplane', 'bicycle', 'boat', 'bus', 'car', 'motorbike', 'train',
-            'bottle', 'chair', 'diningtable', 'pottedplant', 'sofa', 'tvmonitor'
-        ]
-        classes = sorted(classes)
-        self.label2idx = {classes[idx]: idx for idx in range(len(classes))}
-        self.idx2label = {idx: classes[idx] for idx in range(len(classes))}
-        print(self.idx2label)
-        self.images_info = load_images_and_anns(self.im_sets,
-                                                self.label2idx,
-                                                self.fname,
-                                                self.split)
-    
-    def __len__(self):
-        return len(self.images_info)
-    
-    def __getitem__(self, index):
-        im_info = self.images_info[index]
-        im = cv2.imread(im_info['filename'])
-        im = cv2.cvtColor(im, cv2.COLOR_BGR2RGB)
-
-        # Get annotations for this image
-        bboxes = [detection['bbox'] for detection in im_info['detections']]
-        labels = [detection['label'] for detection in im_info['detections']]
-        difficult = [detection['difficult'] for detection in im_info['detections']]
-
-        # Transform Image and ann according to augmentations list
-        transformed_info = self.transforms[self.split](image=im,
-                                                       bboxes=bboxes,
-                                                       labels=labels)
+        transformed_info = transforms[self.split](image=im, bboxes=bboxes, labels=labels)
         im = transformed_info['image']
         bboxes = torch.as_tensor(transformed_info['bboxes'])
         labels = torch.as_tensor(transformed_info['labels'])

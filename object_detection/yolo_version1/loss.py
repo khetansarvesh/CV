@@ -73,9 +73,9 @@ class YOLOV1Loss(nn.Module):
         Now we want to Convert this back to (x1, y1, x2, y2) normalized between 0-1 i.e. orginal format of VOC dataset in **PIXEL SPACE**
         '''
 
-       '''
-       Section 3a : Calculating Shifts
-       '''
+        '''
+        Section 3a : Calculating Shifts
+        '''
         # S cells = 1 => each cell adds 1/S pixels of shift
         shifts_x = torch.arange(0, self.S,
                                 dtype=torch.int32,

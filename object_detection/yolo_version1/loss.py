@@ -43,8 +43,7 @@ class YOLOV1Loss(nn.Module):
 
                    
         '''
-        SECTION 1 : 
-        converting preds from (Batch, S*S*(5B+C)) => (Batch, S, S, 5B+C)
+        SECTION 1 :  converting preds from (Batch, S*S*(5B+C)) => (Batch, S, S, 5B+C)
         '''
         preds = preds.reshape(batch_size, self.S, self.S, 5*self.B + self.C)
 
@@ -75,8 +74,7 @@ class YOLOV1Loss(nn.Module):
         '''
 
                '''
-               Section 3a :
-               Calculating Shifts
+               Section 3a : Calculating Shifts
                '''
         # S cells = 1 => each cell adds 1/S pixels of shift
         shifts_x = torch.arange(0, self.S,
@@ -150,33 +148,52 @@ class YOLOV1Loss(nn.Module):
 
 
                    
-        # iou -> (Batch_size, S, S, B)
+
+        '''
+        SECTION 4 : Calculating IOU => (Batch_size, S, S, B)
+        '''
         iou = get_iou(pred_boxes_x1y1x2y2, target_boxes_x1y1x2y2)
 
-        # max_iou_val/max_iou_idx -> (Batch_size, S, S, 1)
-        max_iou_val, max_iou_idx = iou.max(dim=-1, keepdim=True)
 
-        #########################
-        # Indicator Definitions #
-        #########################
-        # before max_iou_idx -> (Batch_size, S, S, 1) Eg [[0], [1], [0], [0]]
-        # after repeating max_iou_idx -> (Batch_size, S, S, B)
-        # Eg. [[0, 0], [1, 1], [0, 0], [0, 0]] assuming B = 2
+
+
+
+
+
+                   
+
+
+
+        '''
+        SECTION 5 : Calculating bounding box which has max IOU for each grid cell
+        '''
+
+        # calculating the bouding box index which has max IOU for each grid cell with the actual one
+        max_iou_val, max_iou_idx = iou.max(dim=-1, keepdim=True) # dim of both of these is (Batch_size, S, S, 1)
+
+        # changing dimension from (Batch_size, S, S, 1) eg [[0], [1], [0], [0]] => (Batch_size, S, S, B) eg [[0, 0], [1, 1], [0, 0], [0, 0]] assuming B = 2
         max_iou_idx = max_iou_idx.repeat(1, 1, 1, self.B)
 
-        # bb_idxs -> (Batch_size, S, S, B)
-        #  Eg. [[0, 1], [0, 1], [0, 1], [0, 1]] assuming B = 2
+     
+        # bb_idxs -> (Batch_size, S, S, B) Eg. [[0, 1], [0, 1], [0, 1], [0, 1]] assuming B = 2
         bb_idxs = (torch.arange(self.B).reshape(1, 1, 1, self.B).expand_as(max_iou_idx).to(preds.device))
 
-        # is_max_iou_box -> (Batch_size, S, S, B)
-        # Eg. [[True, False], [False, True], [True, False], [True, False]]
-        # only the index which is max iou boxes index will be 1 rest all 0
+        # is_max_iou_box -> (Batch_size, S, S, B) Eg. [[True, False], [False, True], [True, False], [True, False]] only the index which is max iou boxes index will be 1 rest all 0
         is_max_iou_box = (max_iou_idx == bb_idxs).long()
 
         # obj_indicator -> (Batch_size, S, S, 1)
         obj_indicator = targets[..., 4:5]
 
-        # Loss definitions start from here
+
+
+
+
+
+                   
+
+        '''
+        Section 6 : Calculating Losses
+        '''
 
         #######################
         # Classification Loss #
@@ -187,6 +204,8 @@ class YOLOV1Loss(nn.Module):
         # Only keep losses from cells with object assigned
         cls_mse = (obj_indicator * cls_mse).sum()
 
+
+                   
         ######################################################
         # Objectness Loss (For responsible predictor boxes ) #
         ######################################################
@@ -197,6 +216,9 @@ class YOLOV1Loss(nn.Module):
         # and that box which is the responsible predictor
         obj_mse = (is_max_box_obj_indicator * obj_mse).sum()
 
+
+
+                   
         #####################
         # Localization Loss #
         #####################
@@ -212,6 +234,8 @@ class YOLOV1Loss(nn.Module):
         h_sqrt_mse = (pred_boxes[..., 3] - target_boxes[..., 3]) ** 2
         h_sqrt_mse = (is_max_box_obj_indicator * h_sqrt_mse).sum()
 
+
+                   
         #################################################
         # Objectness Loss
         # For boxes of cells assigned with object that
@@ -222,6 +246,9 @@ class YOLOV1Loss(nn.Module):
         no_obj_mse = (pred_boxes[..., 4] - torch.zeros_like(pred_boxes[..., 4])) ** 2
         no_obj_mse = (no_object_indicator * no_obj_mse).sum()
 
+
+
+                   
         ##############
         # Total Loss #
         ##############

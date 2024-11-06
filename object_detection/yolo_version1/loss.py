@@ -73,9 +73,9 @@ class YOLOV1Loss(nn.Module):
         Now we want to Convert this back to (x1, y1, x2, y2) normalized between 0-1 i.e. orginal format of VOC dataset in **PIXEL SPACE**
         '''
 
-               '''
-               Section 3a : Calculating Shifts
-               '''
+       '''
+       Section 3a : Calculating Shifts
+       '''
         # S cells = 1 => each cell adds 1/S pixels of shift
         shifts_x = torch.arange(0, self.S,
                                 dtype=torch.int32,
@@ -93,14 +93,14 @@ class YOLOV1Loss(nn.Module):
 
 
                    
-            '''
-            SECTION 3b : 
-            Converting (x_center_offset, y_center_offset, w, h) from pixel space to (x1, y1, x2, y2) in **image space**
-            since target values of these are in pixel space
+        '''
+        SECTION 3b : 
+        Converting (x_center_offset, y_center_offset, w, h) from pixel space to (x1, y1, x2, y2) in **image space**
+        since target values of these are in pixel space
     
-            # x1 = (xc_offset / S + shift_x) - 0.5 * w         #dividing by S helps us convert from grid space to pixel space
-            # x2 = (xc_offset / S + shift_x) + 0.5 * w
-            '''
+        # x1 = (xc_offset / S + shift_x) - 0.5 * w         #dividing by S helps us convert from grid space to pixel space
+        # x2 = (xc_offset / S + shift_x) + 0.5 * w
+        '''
 
         pred_boxes_x1 = ((pred_boxes[..., 0]/self.S + shifts_x)- 0.5*torch.square(pred_boxes[..., 2]))
         pred_boxes_x1 = pred_boxes_x1[..., None]
@@ -118,10 +118,10 @@ class YOLOV1Loss(nn.Module):
         pred_boxes_x1y1x2y2 = torch.cat([pred_boxes_x1, pred_boxes_y1, pred_boxes_x2, pred_boxes_y2], dim=-1)
 
 
-            '''
-            SECTION 3c : 
-            Same as what we did in section 3b but there we did it for predicted values, here we will do for target values
-            '''
+        '''
+        SECTION 3c : 
+        Same as what we did in section 3b but there we did it for predicted values, here we will do for target values
+        '''
                    
         # target_boxes -> (Batch_size, S, S, B, 5)
         target_boxes = targets[..., :5*self.B].reshape(batch_size, self.S, self.S, self.B, -1)

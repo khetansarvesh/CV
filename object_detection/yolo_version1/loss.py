@@ -25,14 +25,7 @@ def get_iou(boxes1, boxes2):
 
 
 class YOLOV1Loss(nn.Module):
-    r"""
-    Loss module for YoloV1 which caters to the following components:
-    1. Localization Loss for responsible predictor boxes
-    2. Objectness Loss for responsible predictor boxes
-    2. Objectness Loss for non-responsible predictor boxes of cells assigned with objects
-    2. Objectness Loss for ALL predictor boxes of cells not assigned with objects
-    3. Classification Loss
-    """
+
     def __init__(self, S=7, B=2, C=20):
         super(YOLOV1Loss, self).__init__()
         self.S = S
@@ -48,11 +41,43 @@ class YOLOV1Loss(nn.Module):
 
         batch_size = preds.size(0)
 
-        # converting preds from (Batch, S*S*(5B+C)) => (Batch, S, S, 5B+C)
+                   
+        '''
+        SECTION 1 : 
+        converting preds from (Batch, S*S*(5B+C)) => (Batch, S, S, 5B+C)
+        '''
         preds = preds.reshape(batch_size, self.S, self.S, 5*self.B + self.C)
 
-        # Shifts for all grid cell locations.
-        # Will use these for converting (x_center_offset, y_center_offset) => (x1, y1, x2, y2) format which original VOC dataset was on but normalized between 0-1
+
+
+
+        '''
+        SECTION 2 : 
+        1. The model predicted 3 things right => bounding box coordinates, object / no object, classification probabilities.
+        Now we are just interested in bounding box coordinates and object/noobject and hence extracting that from preds.
+
+        2. After extracting we are also reshaping it from (Batch, S*S*(5B+C)) => (Batch_size, S, S, B, 5)
+        '''
+        pred_boxes = preds[..., :5*self.B].reshape(batch_size, self.S, self.S, self.B,-1)
+
+
+
+
+
+
+
+
+                   
+        '''
+        SECTION 3 : 
+        Model predicted (x_center_offset, y_center_offset, root(width), root(height)) in **GRID SPACE**
+        Now we want to Convert this back to (x1, y1, x2, y2) normalized between 0-1 i.e. orginal format of VOC dataset in **PIXEL SPACE**
+        '''
+
+               '''
+               Section 3a :
+               Calculating Shifts
+               '''
         # S cells = 1 => each cell adds 1/S pixels of shift
         shifts_x = torch.arange(0, self.S,
                                 dtype=torch.int32,
@@ -68,60 +93,63 @@ class YOLOV1Loss(nn.Module):
         shifts_x = shifts_x.reshape((1, self.S, self.S, 1)).repeat(1, 1, 1, self.B)
         shifts_y = shifts_y.reshape((1, self.S, self.S, 1)).repeat(1, 1, 1, self.B)
 
-        # pred_boxes -> (Batch_size, S, S, B, 5)
-        pred_boxes = preds[..., :5*self.B].reshape(batch_size,
-                                                   self.S,
-                                                   self.S,
-                                                   self.B,
-                                                   -1)
 
-        # xc_offset yc_offset w h -> x1 y1 x2 y2 (normalized 0-1)
-        # x_center = (xc_offset / S + shift_x)
-        # x1 = x_center - 0.5 * w
-        # x2 = x_center + 0.5 * w
-        pred_boxes_x1 = ((pred_boxes[..., 0]/self.S + shifts_x)
-                         - 0.5*torch.square(pred_boxes[..., 2]))
+                   
+            '''
+            SECTION 3b : 
+            Converting (x_center_offset, y_center_offset, w, h) from pixel space to (x1, y1, x2, y2) in **image space**
+            since target values of these are in pixel space
+    
+            # x1 = (xc_offset / S + shift_x) - 0.5 * w         #dividing by S helps us convert from grid space to pixel space
+            # x2 = (xc_offset / S + shift_x) + 0.5 * w
+            '''
+
+        pred_boxes_x1 = ((pred_boxes[..., 0]/self.S + shifts_x)- 0.5*torch.square(pred_boxes[..., 2]))
         pred_boxes_x1 = pred_boxes_x1[..., None]
-        pred_boxes_y1 = ((pred_boxes[..., 1]/self.S + shifts_y)
-                         - 0.5*torch.square(pred_boxes[..., 3]))
+                   
+        pred_boxes_y1 = ((pred_boxes[..., 1]/self.S + shifts_y)- 0.5*torch.square(pred_boxes[..., 3]))
         pred_boxes_y1 = pred_boxes_y1[..., None]
-        pred_boxes_x2 = ((pred_boxes[..., 0]/self.S + shifts_x)
-                         + 0.5*torch.square(pred_boxes[..., 2]))
+                   
+        pred_boxes_x2 = ((pred_boxes[..., 0]/self.S + shifts_x)+ 0.5*torch.square(pred_boxes[..., 2]))
         pred_boxes_x2 = pred_boxes_x2[..., None]
-        pred_boxes_y2 = ((pred_boxes[..., 1]/self.S + shifts_y)
-                         + 0.5*torch.square(pred_boxes[..., 3]))
+                   
+        pred_boxes_y2 = ((pred_boxes[..., 1]/self.S + shifts_y)+ 0.5*torch.square(pred_boxes[..., 3]))
         pred_boxes_y2 = pred_boxes_y2[..., None]
-        pred_boxes_x1y1x2y2 = torch.cat([
-            pred_boxes_x1,
-            pred_boxes_y1,
-            pred_boxes_x2,
-            pred_boxes_y2], dim=-1)
 
+        # concatenating all of these
+        pred_boxes_x1y1x2y2 = torch.cat([pred_boxes_x1, pred_boxes_y1, pred_boxes_x2, pred_boxes_y2], dim=-1)
+
+
+            '''
+            SECTION 3c : 
+            Same as what we did in section 3b but there we did it for predicted values, here we will do for target values
+            '''
+                   
         # target_boxes -> (Batch_size, S, S, B, 5)
-        target_boxes = targets[..., :5*self.B].reshape(batch_size,
-                                                       self.S,
-                                                       self.S,
-                                                       self.B,
-                                                       -1)
-        target_boxes_x1 = ((target_boxes[..., 0] / self.S + shifts_x)
-                           - 0.5 * torch.square(target_boxes[..., 2]))
+        target_boxes = targets[..., :5*self.B].reshape(batch_size, self.S, self.S, self.B, -1)
+                   
+        target_boxes_x1 = ((target_boxes[..., 0] / self.S + shifts_x)- 0.5 * torch.square(target_boxes[..., 2]))
         target_boxes_x1 = target_boxes_x1[..., None]
-        target_boxes_y1 = ((target_boxes[..., 1] / self.S + shifts_y)
-                           - 0.5 * torch.square(target_boxes[..., 3]))
+                   
+        target_boxes_y1 = ((target_boxes[..., 1] / self.S + shifts_y)- 0.5 * torch.square(target_boxes[..., 3]))
         target_boxes_y1 = target_boxes_y1[..., None]
-        target_boxes_x2 = ((target_boxes[..., 0] / self.S + shifts_x)
-                           + 0.5 * torch.square(target_boxes[..., 2]))
+                   
+        target_boxes_x2 = ((target_boxes[..., 0] / self.S + shifts_x)+ 0.5 * torch.square(target_boxes[..., 2]))
         target_boxes_x2 = target_boxes_x2[..., None]
-        target_boxes_y2 = ((target_boxes[..., 1] / self.S + shifts_y)
-                           + 0.5 * torch.square(target_boxes[..., 3]))
+                   
+        target_boxes_y2 = ((target_boxes[..., 1] / self.S + shifts_y)+ 0.5 * torch.square(target_boxes[..., 3]))
         target_boxes_y2 = target_boxes_y2[..., None]
-        target_boxes_x1y1x2y2 = torch.cat([
-            target_boxes_x1,
-            target_boxes_y1,
-            target_boxes_x2,
-            target_boxes_y2
-        ], dim=-1)
 
+        # concatenating all of these
+        target_boxes_x1y1x2y2 = torch.cat([target_boxes_x1,target_boxes_y1,target_boxes_x2,target_boxes_y2], dim=-1)
+
+
+
+
+
+
+
+                   
         # iou -> (Batch_size, S, S, B)
         iou = get_iou(pred_boxes_x1y1x2y2, target_boxes_x1y1x2y2)
 

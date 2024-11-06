@@ -1,7 +1,3 @@
-"""
-Creates a Pytorch dataset to load the Pascal VOC dataset
-"""
-
 import torch
 import os
 import pandas as pd

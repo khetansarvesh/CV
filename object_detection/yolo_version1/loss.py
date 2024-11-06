@@ -41,26 +41,18 @@ class YOLOV1Loss(nn.Module):
         self.lambda_coord = 5
         self.lambda_noobj = 0.5
 
-    def forward(self, preds, targets, use_sigmoid=False):
-        r"""
-        Main method of loss computation
-        :param preds: (Batch, S*S*(5B+C)) tensor
-        :param targets: (Batch, S, S, (5B+C)) tensor.
-            Target element for each cell has been duplicated 5B times(done in VOCDataset)
-        :param use_sigmoid: Whether to use sigmoid activation for box predicitons or not
-        """
+    def forward(self, 
+                preds, # predicted values (Batch, S*S*(5B+C)) tensor
+                targets # actual values (Batch, S, S, (5B+C)) tensor
+               ):
+
         batch_size = preds.size(0)
 
-        # preds -> (Batch, S, S, 5B+C)
+        # converting preds from (Batch, S*S*(5B+C)) => (Batch, S, S, 5B+C)
         preds = preds.reshape(batch_size, self.S, self.S, 5*self.B + self.C)
 
-        # Generally sigmoid leads to quicker convergence
-        if use_sigmoid:
-            preds[..., :5 * self.B] = torch.nn.functional.sigmoid(preds[..., :5 * self.B])
-
         # Shifts for all grid cell locations.
-        # Will use these for converting x_center_offset/y_center_offset
-        # values to x1/y1/x2/y2(normalized 0-1)
+        # Will use these for converting (x_center_offset, y_center_offset) => (x1, y1, x2, y2) format which original VOC dataset was on but normalized between 0-1
         # S cells = 1 => each cell adds 1/S pixels of shift
         shifts_x = torch.arange(0, self.S,
                                 dtype=torch.int32,
@@ -143,10 +135,11 @@ class YOLOV1Loss(nn.Module):
         # after repeating max_iou_idx -> (Batch_size, S, S, B)
         # Eg. [[0, 0], [1, 1], [0, 0], [0, 0]] assuming B = 2
         max_iou_idx = max_iou_idx.repeat(1, 1, 1, self.B)
+
         # bb_idxs -> (Batch_size, S, S, B)
         #  Eg. [[0, 1], [0, 1], [0, 1], [0, 1]] assuming B = 2
-        bb_idxs = (torch.arange(self.B).reshape(1, 1, 1, self.B).expand_as(max_iou_idx)
-                   .to(preds.device))
+        bb_idxs = (torch.arange(self.B).reshape(1, 1, 1, self.B).expand_as(max_iou_idx).to(preds.device))
+
         # is_max_iou_box -> (Batch_size, S, S, B)
         # Eg. [[True, False], [False, True], [True, False], [True, False]]
         # only the index which is max iou boxes index will be 1 rest all 0

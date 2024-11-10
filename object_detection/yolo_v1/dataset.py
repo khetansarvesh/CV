@@ -2,6 +2,7 @@ import torch
 import os
 import pandas as pd
 from PIL import Image
+import torchvision.transforms as transforms
 
 class Compose(object):
     def __init__(self, transforms):

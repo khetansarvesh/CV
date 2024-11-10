@@ -57,21 +57,20 @@ class VOCDataset(torch.utils.data.Dataset):
             class_label, x, y, width, height = box.tolist()
             class_label = int(class_label)
 
+            # calculating which grid cell does the bouding box belongs to => (row, column)
+            r = int(self.S * y)
+            c = int(self.S * x)
+            
             # calculating (x_center,y_center) coordinates and (width, height) of the bounding box wrt the grid cell
-            x_cell = self.S * x - int(self.S * x)
-            y_cell = self.S * y - int(self.S * y)
+            x_cell = self.S * x - j
+            y_cell = self.S * y - i
             width_cell = width * self.S # width_pixels = (width*self.image_width), cell_pixels = (self.image_width), width_relative_to_cell = width_pixels/cell_pixels
             height_cell = height * self.S
 
-            # If no object already found for specific cell i,j => Note: This means we restrict to ONE object per cell!
+            # Check if there is a bouding box assigned to this grid cell or not, if not then assign one and add the bounding box to it
             if label_matrix[i, j, 20] == 0:
-                # Set that there exists an object
-                label_matrix[i, j, 20] = 1
-
-                box_coordinates = torch.tensor([x_cell, y_cell, width_cell, height_cell]) #bounding box coordinates
-                label_matrix[i, j, 21:25] = box_coordinates
-
-                # Set one hot encoding for class_label
-                label_matrix[i, j, class_label] = 1
+                label_matrix[i, j, 20] = 1 # Set that there exists an object
+                label_matrix[i, j, 21:25] = torch.tensor([x_cell, y_cell, width_cell, height_cell]) #bounding box coordinates
+                label_matrix[i, j, class_label] = 1 # Set one hot encoding for class_label
 
         return image, label_matrix

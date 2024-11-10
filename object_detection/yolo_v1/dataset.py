@@ -58,26 +58,26 @@ class VOCDataset(torch.utils.data.Dataset):
             class_label = int(class_label)
 
             # calculating which grid cell does the bouding box belongs to => (row, column)
-            r = int(self.S * y)
-            c = int(self.S * x)
+            r = int(self.S * y) #i
+            c = int(self.S * x) #j
             
             # calculating (x_center,y_center) coordinates and (width, height) of the bounding box wrt the grid cell
-            x_cell = self.S * x - j
-            y_cell = self.S * y - i
+            x_cell = self.S * x - c
+            y_cell = self.S * y - r
             width_cell = width * self.S #  = grid width / image width = width*self.image_width / self.image_width
             height_cell = height * self.S
 
             # Check if there is a bouding box assigned to this grid cell or not, if not then assign one and add the bounding box to it
-            if label_matrix[i, j, 20] == 0:
+            if label_matrix[r, c, 20] == 0:
                 
                 # 0 to 19 represents classes, and they are set to 0, setting the class that this belongs to as 1
-                label_matrix[i, j, class_label] = 1 
+                label_matrix[r, c, class_label] = 1 
 
                 # 20 denotes it it has an object or not, so setting that here
-                label_matrix[i, j, 20] = 1
+                label_matrix[r, c, 20] = 1
 
                 # 21 to 25 represents bounding box coordinates, setting that up
-                label_matrix[i, j, 21:25] = torch.tensor([x_cell, y_cell, width_cell, height_cell])
+                label_matrix[r, c, 21:25] = torch.tensor([x_cell, y_cell, width_cell, height_cell])
 
                 # 26 to 29 is kept empty
 

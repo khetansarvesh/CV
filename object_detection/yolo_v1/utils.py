@@ -92,9 +92,7 @@ def non_max_suppression(bboxes, iou_threshold, threshold, box_format="corners"):
     return bboxes_after_nms
 
 
-def mean_average_precision(
-    pred_boxes, true_boxes, iou_threshold=0.5, box_format="midpoint", num_classes=20
-):
+def mean_average_precision(pred_boxes, true_boxes, iou_threshold=0.5, box_format="midpoint", num_classes=20):
     """
     Calculates mean average precision 
 
@@ -232,15 +230,8 @@ def plot_image(image, boxes):
 
     plt.show()
 
-def get_bboxes(
-    loader,
-    model,
-    iou_threshold,
-    threshold,
-    pred_format="cells",
-    box_format="midpoint",
-    device="cuda",
-):
+
+def get_bboxes(loader, model, iou_threshold, threshold, pred_format="cells", box_format="midpoint", device="cuda",):
     all_pred_boxes = []
     all_true_boxes = []
 
@@ -284,7 +275,6 @@ def get_bboxes(
 
     model.train()
     return all_pred_boxes, all_true_boxes
-
 
 
 def convert_cellboxes(predictions, S=7):

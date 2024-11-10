@@ -19,7 +19,6 @@ class VOCDataset(torch.utils.data.Dataset):
         self.annotations = pd.read_csv(csv_file)
         self.img_dir = img_dir
         self.label_dir = label_dir
-        self.transform = Compose([transforms.Resize((448, 448)), transforms.ToTensor(),])
         self.S = S
         self.B = B
         self.C = C
@@ -51,7 +50,8 @@ class VOCDataset(torch.utils.data.Dataset):
         boxes = torch.tensor(boxes)
 
         # performing transformations on images and boxes
-        image, boxes = self.transform(image, boxes)
+        transformations = Compose([transforms.Resize((448, 448)), transforms.ToTensor(),])
+        image, boxes = transformations(image, boxes)
 
         # Convert To Cells
         label_matrix = torch.zeros((self.S, self.S, self.C + 5 * self.B))

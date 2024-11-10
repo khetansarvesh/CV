@@ -13,6 +13,9 @@ def intersection_over_union(boxes_preds, boxes_labels, box_format="midpoint"):
         tensor: Intersection over union for all examples
     """
 
+    # Slicing idx:idx+1 in order to keep tensor dimensionality
+    # Doing ... in indexing if there would be additional dimensions
+    # Like for Yolo algorithm which would have (N, S, S, 4) in shape
     if box_format == "midpoint":
         box1_x1 = boxes_preds[..., 0:1] - boxes_preds[..., 2:3] / 2
         box1_y1 = boxes_preds[..., 1:2] - boxes_preds[..., 3:4] / 2
@@ -38,7 +41,7 @@ def intersection_over_union(boxes_preds, boxes_labels, box_format="midpoint"):
     x2 = torch.min(box1_x2, box2_x2)
     y2 = torch.min(box1_y2, box2_y2)
 
-    # .clamp(0) is for the case when they do not intersect
+    # Need clamp(0) in case they do not intersect, then we want intersection to be 0
     intersection = (x2 - x1).clamp(0) * (y2 - y1).clamp(0)
 
     box1_area = abs((box1_x2 - box1_x1) * (box1_y2 - box1_y1))

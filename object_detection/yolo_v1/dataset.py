@@ -69,8 +69,16 @@ class VOCDataset(torch.utils.data.Dataset):
 
             # Check if there is a bouding box assigned to this grid cell or not, if not then assign one and add the bounding box to it
             if label_matrix[i, j, 20] == 0:
-                label_matrix[i, j, 20] = 1 # Set that there exists an object
-                label_matrix[i, j, 21:25] = torch.tensor([x_cell, y_cell, width_cell, height_cell]) #bounding box coordinates
-                label_matrix[i, j, class_label] = 1 # Set one hot encoding for class_label
+                
+                # 0 to 19 represents classes, and they are set to 0, setting the class that this belongs to as 1
+                label_matrix[i, j, class_label] = 1 
+
+                # 20 denotes it it has an object or not, so setting that here
+                label_matrix[i, j, 20] = 1
+
+                # 21 to 25 represents bounding box coordinates, setting that up
+                label_matrix[i, j, 21:25] = torch.tensor([x_cell, y_cell, width_cell, height_cell])
+
+                # 26 to 29 is kept empty
 
         return image, label_matrix

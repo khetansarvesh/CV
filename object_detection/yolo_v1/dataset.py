@@ -5,9 +5,7 @@ from PIL import Image
 
 
 class VOCDataset(torch.utils.data.Dataset):
-    def __init__(
-        self, csv_file, img_dir, label_dir, S=7, B=2, C=20, transform=None,
-    ):
+    def __init__(self, csv_file, img_dir, label_dir, S=7, B=2, C=20, transform=None,):
         self.annotations = pd.read_csv(csv_file)
         self.img_dir = img_dir
         self.label_dir = label_dir

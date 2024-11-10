@@ -57,36 +57,18 @@ class VOCDataset(torch.utils.data.Dataset):
             class_label, x, y, width, height = box.tolist()
             class_label = int(class_label)
 
-            # i,j represents the cell row and cell column
-            i, j = int(self.S * y), int(self.S * x)
-            x_cell, y_cell = self.S * x - j, self.S * y - i
+            # calculating (x_center,y_center) coordinates and (width, height) of the bounding box wrt the grid cell
+            x_cell = self.S * x - int(self.S * x)
+            y_cell = self.S * y - int(self.S * y)
+            width_cell = width * self.S # width_pixels = (width*self.image_width), cell_pixels = (self.image_width), width_relative_to_cell = width_pixels/cell_pixels
+            height_cell = height * self.S
 
-            """
-            Calculating the width and height of cell of bounding box,
-            relative to the cell is done by the following, with
-            width as the example:
-            
-            width_pixels = (width*self.image_width)
-            cell_pixels = (self.image_width)
-            
-            Then to find the width relative to the cell is simply:
-            width_pixels/cell_pixels, simplification leads to the
-            formulas below.
-            """
-            width_cell, height_cell = (width * self.S, height * self.S)
-
-            # If no object already found for specific cell i,j
-            # Note: This means we restrict to ONE object
-            # per cell!
+            # If no object already found for specific cell i,j => Note: This means we restrict to ONE object per cell!
             if label_matrix[i, j, 20] == 0:
                 # Set that there exists an object
                 label_matrix[i, j, 20] = 1
 
-                # Box coordinates
-                box_coordinates = torch.tensor(
-                    [x_cell, y_cell, width_cell, height_cell]
-                )
-
+                box_coordinates = torch.tensor([x_cell, y_cell, width_cell, height_cell]) #bounding box coordinates
                 label_matrix[i, j, 21:25] = box_coordinates
 
                 # Set one hot encoding for class_label

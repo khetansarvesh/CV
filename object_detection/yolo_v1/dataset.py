@@ -64,7 +64,7 @@ class VOCDataset(torch.utils.data.Dataset):
             # calculating (x_center,y_center) coordinates and (width, height) of the bounding box wrt the grid cell
             x_cell = self.S * x - j
             y_cell = self.S * y - i
-            width_cell = width * self.S # width_pixels = (width*self.image_width), cell_pixels = (self.image_width), width_relative_to_cell = width_pixels/cell_pixels
+            width_cell = width * self.S #  = grid width / image width = width*self.image_width / self.image_width
             height_cell = height * self.S
 
             # Check if there is a bouding box assigned to this grid cell or not, if not then assign one and add the bounding box to it

@@ -28,7 +28,15 @@ class VOCDataset(torch.utils.data.Dataset):
         return len(self.annotations)
 
     def __getitem__(self, index):
+
+        # loading images
+        img_path = os.path.join(self.img_dir, self.annotations.iloc[index, 0])
+        image = Image.open(img_path)
+
+        # loading labels
         label_path = os.path.join(self.label_dir, self.annotations.iloc[index, 1])
+
+        # for each image extracting class label and bouding box coordinates i.e. (x,y,width,height)
         boxes = []
         with open(label_path) as f:
             for label in f.readlines():
@@ -39,16 +47,16 @@ class VOCDataset(torch.utils.data.Dataset):
 
                 boxes.append([class_label, x, y, width, height])
 
-        img_path = os.path.join(self.img_dir, self.annotations.iloc[index, 0])
-        image = Image.open(img_path)
+        # converting these bounding boxes to tensors
         boxes = torch.tensor(boxes)
 
-        if self.transform:
-            # image = self.transform(image)
-            image, boxes = self.transform(image, boxes)
+        # performing transformations on images and boxes
+        image, boxes = self.transform(image, boxes)
 
         # Convert To Cells
         label_matrix = torch.zeros((self.S, self.S, self.C + 5 * self.B))
+
+        
         for box in boxes:
             class_label, x, y, width, height = box.tolist()
             class_label = int(class_label)
@@ -69,10 +77,7 @@ class VOCDataset(torch.utils.data.Dataset):
             width_pixels/cell_pixels, simplification leads to the
             formulas below.
             """
-            width_cell, height_cell = (
-                width * self.S,
-                height * self.S,
-            )
+            width_cell, height_cell = (width * self.S, height * self.S)
 
             # If no object already found for specific cell i,j
             # Note: This means we restrict to ONE object

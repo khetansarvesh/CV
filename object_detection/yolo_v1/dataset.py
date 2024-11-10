@@ -3,13 +3,22 @@ import os
 import pandas as pd
 from PIL import Image
 
+class Compose(object):
+    def __init__(self, transforms):
+        self.transforms = transforms
+
+    def __call__(self, img, bboxes):
+        for t in self.transforms:
+            img, bboxes = t(img), bboxes
+
+        return img, bboxes
 
 class VOCDataset(torch.utils.data.Dataset):
-    def __init__(self, csv_file, img_dir, label_dir, S=7, B=2, C=20, transform=None,):
+    def __init__(self, csv_file, img_dir, label_dir, S=7, B=2, C=20):
         self.annotations = pd.read_csv(csv_file)
         self.img_dir = img_dir
         self.label_dir = label_dir
-        self.transform = transform
+        self.transform = Compose([transforms.Resize((448, 448)), transforms.ToTensor(),])
         self.S = S
         self.B = B
         self.C = C

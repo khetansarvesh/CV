@@ -32,18 +32,14 @@ class VOCDataset(torch.utils.data.Dataset):
         img_path = os.path.join(self.img_dir, self.annotations.iloc[index, 0])
         image = Image.open(img_path)
 
-        # loading labels
-        label_path = os.path.join(self.label_dir, self.annotations.iloc[index, 1])
+        # loading annotations
+        ann_path = os.path.join(self.label_dir, self.annotations.iloc[index, 1])
 
-        # for each image extracting class label and bouding box coordinates i.e. (x,y,width,height)
+        # for each image extracting class label and bounding box coordinates i.e. (x,y,width,height) from annotations file
         boxes = []
-        with open(label_path) as f:
-            for label in f.readlines():
-                class_label, x, y, width, height = [
-                    float(x) if float(x) != int(float(x)) else int(x)
-                    for x in label.replace("\n", "").split()
-                ]
-
+        with open(ann_path) as f:
+            for ann in f.readlines():
+                class_label, x, y, width, height = [float(x) if float(x) != int(float(x)) else int(x) for x in ann.replace("\n", "").split()]
                 boxes.append([class_label, x, y, width, height])
 
         # converting these bounding boxes to tensors
@@ -56,7 +52,7 @@ class VOCDataset(torch.utils.data.Dataset):
         # Convert To Cells
         label_matrix = torch.zeros((self.S, self.S, self.C + 5 * self.B))
 
-        
+        # the above loading bounding box coordinates are relative to entire image now we are making it relative to grid
         for box in boxes:
             class_label, x, y, width, height = box.tolist()
             class_label = int(class_label)

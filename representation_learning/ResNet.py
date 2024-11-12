@@ -1,25 +1,25 @@
 import torch
 import torch.nn as nn
-from residual_block_utils.py import *
+from residual_block_utils.py import ResidualBlock
 
-class block(nn.Module):
-    def __init__(self, in_channels, intermediate_channels, identity_downsample=None, stride=1):
-        super().__init__()
+# class block(nn.Module):
+#     def __init__(self, in_channels, intermediate_channels, identity_downsample=None, stride=1):
+#         super().__init__()
 
-        self.block = nn.Sequential(
-            nn.Conv2d( in_channels, intermediate_channels, kernel_size=1, stride=1, padding=0, bias=False, ), nn.BatchNorm2d(intermediate_channels), nn.ReLU()
-            nn.Conv2d(intermediate_channels, intermediate_channels, kernel_size=3, stride=stride, padding=1, bias=False,), nn.BatchNorm2d(intermediate_channels), nn.ReLU()
-            nn.Conv2d( intermediate_channels, intermediate_channels * 4, kernel_size=1, stride=1, padding=0, bias=False, ), nn.BatchNorm2d(intermediate_channels * 4)
-        )
+#         self.block = nn.Sequential(
+#             nn.Conv2d( in_channels, intermediate_channels, kernel_size=1, stride=1, padding=0, bias=False, ), nn.BatchNorm2d(intermediate_channels), nn.ReLU()
+#             nn.Conv2d(intermediate_channels, intermediate_channels, kernel_size=3, stride=stride, padding=1, bias=False,), nn.BatchNorm2d(intermediate_channels), nn.ReLU()
+#             nn.Conv2d( intermediate_channels, intermediate_channels * 4, kernel_size=1, stride=1, padding=0, bias=False, ), nn.BatchNorm2d(intermediate_channels * 4)
+#         )
 
-        self.identity_downsample = identity_downsample
+#         self.identity_downsample = identity_downsample
 
-    def forward(self, x):
+#     def forward(self, x):
 
-        if self.identity_downsample is not None:
-            return self.relu(self.block(x) + self.identity_downsample(identity))
+#         if self.identity_downsample is not None:
+#             return self.relu(self.block(x) + self.identity_downsample(identity))
         
-        return self.relu(self.block(x) + x)
+#         return self.relu(self.block(x) + x)
 
 
 

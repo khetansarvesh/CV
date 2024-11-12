@@ -24,7 +24,7 @@ class block(nn.Module):
 
 
 class ResNet(nn.Module):
-    def __init__(self, layers):
+    def __init__(self):
         super(ResNet, self).__init__()
         self.in_channels = 64
 
@@ -34,10 +34,10 @@ class ResNet(nn.Module):
         self.maxpool = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
 
         # Essentially the entire ResNet architecture are in these 4 lines below
-        self.layer1 = self._make_layer(layers[0], intermediate_channels=64, stride=1)
-        self.layer2 = self._make_layer(layers[1], intermediate_channels=128, stride=2)
-        self.layer3 = self._make_layer(layers[2], intermediate_channels=256, stride=2)
-        self.layer4 = self._make_layer(layers[3], intermediate_channels=512, stride=2)
+        self.layer1 = self._make_layer(3, intermediate_channels=64, stride=1)
+        self.layer2 = self._make_layer(8, intermediate_channels=128, stride=2)
+        self.layer3 = self._make_layer(36, intermediate_channels=256, stride=2)
+        self.layer4 = self._make_layer(3, intermediate_channels=512, stride=2)
 
         self.avgpool = nn.AdaptiveAvgPool2d((1, 1))
         self.fc = nn.Linear(512 * 4, 1000)
@@ -80,13 +80,3 @@ class ResNet(nn.Module):
             layers.append(ResidualBlock(self.in_channels, intermediate_channels))
 
         return nn.Sequential(*layers)
-
-
-#ResNet50
-ResNet([3, 4, 6, 3])
-
-#ResNet101
-ResNet([3, 4, 23, 3])
-
-#ResNet152
-ResNet([3, 8, 36, 3])

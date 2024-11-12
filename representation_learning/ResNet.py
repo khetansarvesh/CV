@@ -28,9 +28,7 @@ class ResNet(nn.Module):
         super(ResNet, self).__init__()
         self.in_channels = 64
 
-        self.conv1 = nn.Conv2d(3, 64, kernel_size=7, stride=2, padding=3, bias=False)
-        self.bn1 = nn.BatchNorm2d(64)
-        self.relu = nn.ReLU()
+        self.conv1 = nn.Sequential( nn.Conv2d(3, 64, kernel_size=7, stride=2, padding=3, bias=False), nn.BatchNorm2d(64), nn.ReLU() )
         self.maxpool = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
 
         # Essentially the entire ResNet architecture are in these 4 lines below
@@ -43,17 +41,22 @@ class ResNet(nn.Module):
         self.fc = nn.Linear(512 * 4, 1000)
 
     def forward(self, x):
+
+        # feature extraction
         x = self.conv1(x)
-        x = self.bn1(x)
-        x = self.relu(x)
         x = self.maxpool(x)
+            
         x = self.layer1(x)
         x = self.layer2(x)
         x = self.layer3(x)
         x = self.layer4(x)
 
         x = self.avgpool(x)
+            
+        # image flattening
         x = x.reshape(x.shape[0], -1)
+
+        # classification
         x = self.fc(x)
 
         return x

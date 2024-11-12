@@ -62,14 +62,15 @@ class ResNet(nn.Module):
         return x
 
     def _make_layer(self, num_residual_blocks, intermediate_channels, stride):
-        identity_downsample = None
         layers = []
 
         # Either if we half the input space for ex, 56x56 -> 28x28 (stride=2), or channels changes
         # we need to adapt the Identity (skip connection) so it will be able to be added
         # to the layer that's ahead
         if stride != 1 or self.in_channels != intermediate_channels * 4:
-            identity_downsample = nn.Sequential( nn.Conv2d( self.in_channels, intermediate_channels * 4, kernel_size=1, stride=stride, bias=False, ),nn.BatchNorm2d(intermediate_channels * 4))
+                identity_downsample = nn.Sequential( nn.Conv2d( self.in_channels, intermediate_channels * 4, kernel_size=1, stride=stride, bias=False, ),nn.BatchNorm2d(intermediate_channels * 4))
+        else:
+                identity_downsample = None
 
         layers.append(ResidualBlock(self.in_channels, intermediate_channels, identity_downsample, stride))
 

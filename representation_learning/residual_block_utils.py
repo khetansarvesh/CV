@@ -9,8 +9,8 @@ class ResidualBlock(nn.Module):
 
         # residual block
         self.block = nn.Sequential(
-            nn.Conv2d(in_channels, out_channels, 3, 1, 1), nn.GroupNorm(num_groups=norm_num_groups, num_channels=out_channels, eps=1e-6, affine=True),nn.ReLU(),
-            nn.Conv2d(out_channels, out_channels, 3, 1, 1), nn.GroupNorm(num_groups=norm_num_groups, num_channels=out_channels, eps=1e-6, affine=True), nn.ReLU()
+            nn.Conv2d(in_channels, out_channels, kernel_size=3, stride=1, padding=1, bias=False), nn.GroupNorm(num_groups=norm_num_groups, num_channels=out_channels, eps=1e-6, affine=True),nn.ReLU(),
+            nn.Conv2d(out_channels, out_channels, kernel_size=3, stride=1, padding=1, bias=False), nn.GroupNorm(num_groups=norm_num_groups, num_channels=out_channels, eps=1e-6, affine=True), nn.ReLU()
         )
         
         # dimensionality matching block
@@ -21,3 +21,22 @@ class ResidualBlock(nn.Module):
             return self.dim_matching_layer(x) + self.block(x)
         else:
             return x + self.block(x)
+
+class ResidualBlock2(nn.Module):
+    def __init__(self, in_channels, out_channels, identity_downsample=None, stride=1):
+        super().__init__()
+
+        self.block = nn.Sequential(
+            nn.Conv2d( in_channels, out_channels, kernel_size=1, stride=1, padding=0, bias=False, ), nn.BatchNorm2d(out_channels), nn.ReLU()
+            nn.Conv2d(out_channels, out_channels, kernel_size=3, stride=stride, padding=1, bias=False,), nn.BatchNorm2d(out_channels), nn.ReLU()
+            nn.Conv2d( out_channels, out_channels * 4, kernel_size=1, stride=1, padding=0, bias=False, ), nn.BatchNorm2d(out_channels * 4)
+        )
+
+        self.identity_downsample = identity_downsample
+
+    def forward(self, x):
+
+        if self.identity_downsample is not None:
+            return self.block(x) + self.identity_downsample(identity)
+        
+        return self.block(x) + x

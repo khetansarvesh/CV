@@ -1,27 +1,6 @@
 import torch
 import torch.nn as nn
-from residual_block_utils.py import ResidualBlock
-
-# class block(nn.Module):
-#     def __init__(self, in_channels, intermediate_channels, identity_downsample=None, stride=1):
-#         super().__init__()
-
-#         self.block = nn.Sequential(
-#             nn.Conv2d( in_channels, intermediate_channels, kernel_size=1, stride=1, padding=0, bias=False, ), nn.BatchNorm2d(intermediate_channels), nn.ReLU()
-#             nn.Conv2d(intermediate_channels, intermediate_channels, kernel_size=3, stride=stride, padding=1, bias=False,), nn.BatchNorm2d(intermediate_channels), nn.ReLU()
-#             nn.Conv2d( intermediate_channels, intermediate_channels * 4, kernel_size=1, stride=1, padding=0, bias=False, ), nn.BatchNorm2d(intermediate_channels * 4)
-#         )
-
-#         self.identity_downsample = identity_downsample
-
-#     def forward(self, x):
-
-#         if self.identity_downsample is not None:
-#             return self.relu(self.block(x) + self.identity_downsample(identity))
-        
-#         return self.relu(self.block(x) + x)
-
-
+from residual_block_utils.py import ResidualBlock2
 
 class ResNet(nn.Module):
     def __init__(self):
@@ -72,7 +51,7 @@ class ResNet(nn.Module):
         else:
                 identity_downsample = None
 
-        layers.append(ResidualBlock(self.in_channels, intermediate_channels, identity_downsample, stride))
+        layers.append(ResidualBlock2(self.in_channels, intermediate_channels, identity_downsample, stride))
 
         # The expansion size is always 4 for ResNet 50,101,152
         self.in_channels = intermediate_channels * 4
@@ -81,6 +60,6 @@ class ResNet(nn.Module):
         # then finally back to 256. Hence no identity downsample is needed, since stride = 1,
         # and also same amount of channels.
         for i in range(num_residual_blocks - 1):
-            layers.append(ResidualBlock(self.in_channels, intermediate_channels))
+            layers.append(ResidualBlock2(self.in_channels, intermediate_channels))
 
         return nn.Sequential(*layers)

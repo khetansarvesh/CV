@@ -24,11 +24,11 @@ class block(nn.Module):
 
 
 class ResNet(nn.Module):
-    def __init__(self, layers, image_channels, num_classes):
+    def __init__(self, layers):
         super(ResNet, self).__init__()
         self.in_channels = 64
 
-        self.conv1 = nn.Conv2d(image_channels, 64, kernel_size=7, stride=2, padding=3, bias=False)
+        self.conv1 = nn.Conv2d(3, 64, kernel_size=7, stride=2, padding=3, bias=False)
         self.bn1 = nn.BatchNorm2d(64)
         self.relu = nn.ReLU()
         self.maxpool = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
@@ -40,7 +40,7 @@ class ResNet(nn.Module):
         self.layer4 = self._make_layer(layers[3], intermediate_channels=512, stride=2)
 
         self.avgpool = nn.AdaptiveAvgPool2d((1, 1))
-        self.fc = nn.Linear(512 * 4, num_classes)
+        self.fc = nn.Linear(512 * 4, 1000)
 
     def forward(self, x):
         x = self.conv1(x)
@@ -83,10 +83,10 @@ class ResNet(nn.Module):
 
 
 #ResNet50
-ResNet([3, 4, 6, 3], 3, 1000)
+ResNet([3, 4, 6, 3])
 
 #ResNet101
-ResNet([3, 4, 23, 3], 3, 1000)
+ResNet([3, 4, 23, 3])
 
 #ResNet152
-ResNet([3, 8, 36, 3], 3, 1000)
+ResNet([3, 8, 36, 3])

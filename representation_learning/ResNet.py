@@ -17,7 +17,7 @@ class ResNet(nn.Module):
         self.layer4 = self._make_layer(3, intermediate_channels=512, stride=2)
 
         self.avgpool = nn.AdaptiveAvgPool2d((1, 1))
-        self.fc = nn.Linear(512 * 4, 1000)
+        self.fc = nn.Linear(2048, 1000)
 
     def forward(self, x):
 

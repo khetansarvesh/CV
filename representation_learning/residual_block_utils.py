@@ -23,7 +23,7 @@ class ResidualBlock(nn.Module):
             return x + self.block(x)
 
 class ResidualBlock2(nn.Module):
-    def __init__(self, in_channels, out_channels, identity_downsample=None, stride=1):
+    def __init__(self, in_channels, out_channels, stride = 1, identity_downsample = None):
         super().__init__()
 
         self.block = nn.Sequential(

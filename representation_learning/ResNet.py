@@ -12,13 +12,19 @@ class ResNet(nn.Module):
         self.maxpool = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
 
         self.layer1 = nn.Sequential(
-                                        ResidualBlock2(64, 64, nn.Sequential( nn.Conv2d(64, 256, kernel_size=1, stride=1, bias=False),nn.BatchNorm2d(256)), 1),
+                                        ResidualBlock2(64, 64, 1, nn.Sequential( 
+                                                                                nn.Conv2d(64, 256, kernel_size = 1, stride = 1, bias = False),
+                                                                                 nn.BatchNorm2d(256)
+                                                                            )),
                                         ResidualBlock2(256, 64),
                                         ResidualBlock2(256, 64)
                                     )
         
         self.layer2 = nn.Sequential(
-                                        ResidualBlock2(256, 128, nn.Sequential(nn.Conv2d(256, 512, 1, 2, bias=False), nn.BatchNorm2d(512)), 2), 
+                                        ResidualBlock2(256, 128, 2, nn.Sequential(
+                                                                                    nn.Conv2d(256, 512, kernel_size = 1, stride = 2, bias=False), 
+                                                                                    nn.BatchNorm2d(512))
+                                                                                  ), 
                                         ResidualBlock2(512, 128), 
                                         ResidualBlock2(512, 128), #1
                                         ResidualBlock2(512, 128), #2
@@ -29,7 +35,10 @@ class ResNet(nn.Module):
                                     )
         
         self.layer3 = nn.Sequential(
-                                        ResidualBlock2(512, 256, nn.Sequential(nn.Conv2d(512, 1024, 1, 2, bias=False), nn.BatchNorm2d(1024)), 2),
+                                        ResidualBlock2(512, 256, 2, nn.Sequential(
+                                                                                    nn.Conv2d(512, 1024, kernel_size = 1, stride = 2, bias=False), 
+                                                                                    nn.BatchNorm2d(1024))
+                                                                                  ),
                                         ResidualBlock2(1024, 256),
                                         
                                         ResidualBlock2(1024, 256), #1
@@ -74,7 +83,10 @@ class ResNet(nn.Module):
                                     )
         
         self.layer4 = nn.Sequential(
-                                        ResidualBlock2(1024, 512, nn.Sequential(nn.Conv2d(1024, 2048, 1, 2, bias=False), nn.BatchNorm2d(2048)), 2),
+                                        ResidualBlock2(1024, 512, 2, nn.Sequential(
+                                                                                    nn.Conv2d(1024, 2048, kernel_size = 1, stride = 2, bias=False), 
+                                                                                    nn.BatchNorm2d(2048))
+                                                                                  ),
                                         ResidualBlock2(2048, 512), #1
                                         ResidualBlock2(2048, 512), #2
                                     )

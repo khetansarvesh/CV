@@ -12,24 +12,66 @@ class ResNet(nn.Module):
         self.maxpool = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
 
         self.layer1 = nn.Sequential(
-            ResidualBlock2(64, 256, nn.Sequential( nn.Conv2d(64, 256, kernel_size=1, stride=1, bias=False),nn.BatchNorm2d(256)), 1),
-            ResidualBlock2(256, 256),
-            ResidualBlock2(256, 256)
-        )
+                                        ResidualBlock2(64, 64, nn.Sequential( nn.Conv2d(64, 256, kernel_size=1, stride=1, bias=False),nn.BatchNorm2d(256)), 1),
+                                        ResidualBlock2(256, 64),
+                                        ResidualBlock2(256, 64)
+                                    )
         
         self.layer2 = nn.Sequential(
-            ResidualBlock2(256, 512, nn.Sequential( nn.Conv2d( self.in_channels, 512, 1, 2, bias=False),nn.BatchNorm2d(512)), 2),
-            ResidualBlock2(512, 512),
-            ResidualBlock2(512, 512),
-            ResidualBlock2(512, 512),
-            ResidualBlock2(512, 512),
-            ResidualBlock2(512, 512),
-            ResidualBlock2(512, 512),
-            ResidualBlock2(512, 512)
-        )
-        #self._make_layer(8, intermediate_channels=128, stride=2)
+                                        ResidualBlock2(256, 128, nn.Sequential(nn.Conv2d(256, 512, 1, 2, bias=False), nn.BatchNorm2d(512)), 2), 
+                                        ResidualBlock2(512, 128), 
+                                        ResidualBlock2(512, 128), #1
+                                        ResidualBlock2(512, 128), #2
+                                        ResidualBlock2(512, 128), #3
+                                        ResidualBlock2(512, 128), #4
+                                        ResidualBlock2(512, 128), #5
+                                        ResidualBlock2(512, 128)  #6
+                                    )
         
-        self.layer3 = self._make_layer(36, intermediate_channels=256, stride=2)
+        self.layer3 = nn.Sequential(
+                                        ResidualBlock2(512, 256, nn.Sequential(nn.Conv2d(512, 1024, 1, 2, bias=False), nn.BatchNorm2d(1024)), 2),
+                                        ResidualBlock2(1024, 256),
+                                        
+                                        ResidualBlock2(1024, 256), #1
+                                        ResidualBlock2(1024, 256), #2
+                                        ResidualBlock2(1024, 256), #3
+                                        ResidualBlock2(1024, 256), #4
+                                        ResidualBlock2(1024, 256), #5
+                                        ResidualBlock2(1024, 256), #6
+                            
+                                        ResidualBlock2(1024, 256), #7
+                                        ResidualBlock2(1024, 256), #8
+                                        ResidualBlock2(1024, 256), #9
+                                        ResidualBlock2(1024, 256), #10
+                                        ResidualBlock2(1024, 256), #11
+                                        ResidualBlock2(1024, 256), #12
+                            
+                                        ResidualBlock2(1024, 256), #13
+                                        ResidualBlock2(1024, 256), #14
+                                        ResidualBlock2(1024, 256), #15
+                                        ResidualBlock2(1024, 256), #16
+                                        ResidualBlock2(1024, 256), #17
+                                        ResidualBlock2(1024, 256), #18
+                            
+                                        ResidualBlock2(1024, 256), #19
+                                        ResidualBlock2(1024, 256), #20
+                                        ResidualBlock2(1024, 256), #21
+                                        ResidualBlock2(1024, 256), #22
+                                        ResidualBlock2(1024, 256), #23
+                                        ResidualBlock2(1024, 256), #24
+                            
+                                        ResidualBlock2(1024, 256), #25
+                                        ResidualBlock2(1024, 256), #26
+                                        ResidualBlock2(1024, 256), #27
+                                        ResidualBlock2(1024, 256), #28
+                                        ResidualBlock2(1024, 256), #29
+                                        ResidualBlock2(1024, 256), #30
+                            
+                                        ResidualBlock2(1024, 256), #31
+                                        ResidualBlock2(1024, 256), #32
+                                        ResidualBlock2(1024, 256), #33
+                                        ResidualBlock2(1024, 256), #34
+                                    )
         
         self.layer4 = self._make_layer(3, intermediate_channels=512, stride=2)
 
@@ -55,7 +97,7 @@ class ResNet(nn.Module):
 
         return x
 
-    def _make_layer(self, num_residual_blocks = 3, intermediate_channels=64, stride=1):
+    def _make_layer(self, num_residual_blocks = 36, intermediate_channels=256, stride=2):
         layers = []
 
         if stride != 1 or self.in_channels != intermediate_channels * 4:

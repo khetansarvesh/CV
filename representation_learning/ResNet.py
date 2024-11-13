@@ -73,7 +73,11 @@ class ResNet(nn.Module):
                                         ResidualBlock2(1024, 256), #34
                                     )
         
-        self.layer4 = self._make_layer(3, intermediate_channels=512, stride=2)
+        self.layer4 = nn.Sequential(
+                                        ResidualBlock2(1024, 512, nn.Sequential(nn.Conv2d(1024, 2048, 1, 2, bias=False), nn.BatchNorm2d(2048)), 2),
+                                        ResidualBlock2(2048, 512), #1
+                                        ResidualBlock2(2048, 512), #2
+                                    )
 
         self.avgpool = nn.AdaptiveAvgPool2d((1, 1))
         self.fc = nn.Linear(2048, 1000)
@@ -96,19 +100,3 @@ class ResNet(nn.Module):
         x = self.fc(x)
 
         return x
-
-    def _make_layer(self, num_residual_blocks = 36, intermediate_channels=256, stride=2):
-        layers = []
-
-        if stride != 1 or self.in_channels != intermediate_channels * 4:
-                identity_downsample = nn.Sequential( nn.Conv2d( self.in_channels, intermediate_channels * 4, kernel_size=1, stride=stride, bias=False, ),nn.BatchNorm2d(intermediate_channels * 4))
-        else:
-                identity_downsample = None
-
-        layers.append(ResidualBlock2(self.in_channels, intermediate_channels, identity_downsample, stride))
-        self.in_channels = intermediate_channels * 4
-
-        for i in range(num_residual_blocks - 1):
-            layers.append(ResidualBlock2(self.in_channels, intermediate_channels))
-
-        return nn.Sequential(*layers)

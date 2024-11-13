@@ -6,7 +6,6 @@ class ResNet(nn.Module):
     
     def __init__(self):
         super(ResNet, self).__init__()
-        self.in_channels = 64
 
         self.conv1 = nn.Sequential( nn.Conv2d(3, 64, kernel_size=7, stride=2, padding=3, bias=False), nn.BatchNorm2d(64), nn.ReLU() )
         self.maxpool = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)

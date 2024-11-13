@@ -23,20 +23,25 @@ class ResidualBlock(nn.Module):
             return x + self.block(x)
 
 class ResidualBlock2(nn.Module):
-    def __init__(self, in_channels, out_channels, stride = 1, identity_downsample = None):
+    def __init__(self, in_channels, out_channels, stride = 1):
         super().__init__()
+        self.in_channels = in_channels
+        self.out_channels = out_channels
 
         self.block = nn.Sequential(
-            nn.Conv2d( in_channels, out_channels, kernel_size=1, stride=1, padding=0, bias=False, ), nn.BatchNorm2d(out_channels), nn.ReLU()
-            nn.Conv2d(out_channels, out_channels, kernel_size=3, stride=stride, padding=1, bias=False,), nn.BatchNorm2d(out_channels), nn.ReLU()
-            nn.Conv2d( out_channels, out_channels * 4, kernel_size=1, stride=1, padding=0, bias=False, ), nn.BatchNorm2d(out_channels * 4)
+            nn.Conv2d( in_channels, out_channels, kernel_size=1, stride=1, padding=0, bias=False), nn.BatchNorm2d(out_channels), nn.ReLU()
+            nn.Conv2d( out_channels, out_channels, kernel_size=3, stride=stride, padding=1, bias=False), nn.BatchNorm2d(out_channels), nn.ReLU()
+            nn.Conv2d( out_channels, out_channels * 4, kernel_size=1, stride=1, padding=0, bias=False), nn.BatchNorm2d(out_channels * 4)
         )
 
-        self.identity_downsample = identity_downsample
+        self.dim_matching_layer = nn.Sequential( 
+                            nn.Conv2d(in_channels, out_channels*4, kernel_size = 1, stride = stride, bias = False),
+                            nn.BatchNorm2d(out_channels*4)
+                            )),
 
     def forward(self, x):
 
-        if self.identity_downsample is not None:
-            return self.block(x) + self.identity_downsample(identity)
+        if self.in_channels != 4 * self.out_channels:
+            return self.block(x) + self.dim_matching_layer(x)
         
         return self.block(x) + x

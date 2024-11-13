@@ -86,8 +86,8 @@ class ResNet(nn.Module):
                                                                                     nn.Conv2d(1024, 2048, kernel_size = 1, stride = 2, bias=False), 
                                                                                     nn.BatchNorm2d(2048))
                                                                                   ),
-                                        ResidualBlock2(2048, 512), #1
-                                        ResidualBlock2(2048, 512), #2
+                                        ResidualBlock2(2048, 512),
+                                        ResidualBlock2(2048, 512),
                                     )
 
         self.avgpool = nn.AdaptiveAvgPool2d((1, 1))

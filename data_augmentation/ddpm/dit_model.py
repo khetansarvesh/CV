@@ -10,11 +10,11 @@ class Attention(nn.Module):
     This is same as VIT code and does not have any changes
     from it.
     """
-    def __init__(self, config):
+    def __init__(self):
         super().__init__()
-        self.n_heads = config['num_heads']
-        self.hidden_size = config['hidden_size']
-        self.head_dim = config['head_dim']
+        self.n_heads = 12
+        self.hidden_size = 768
+        self.head_dim = 64
 
         self.att_dim = self.n_heads * self.head_dim
 
@@ -179,16 +179,16 @@ class TransformerLayer(nn.Module):
             of both mlp/attention prior to residual connection.
     """
 
-    def __init__(self, config):
+    def __init__(self):
         super().__init__()
-        self.hidden_size = config['hidden_size']
+        self.hidden_size = 768
 
         ff_hidden_dim = 4 * self.hidden_size
 
         # Layer norm for attention block
         self.att_norm = nn.LayerNorm(self.hidden_size, elementwise_affine=False, eps=1E-6)
 
-        self.attn_block = Attention(config)
+        self.attn_block = Attention()
 
         # Layer norm for mlp block
         self.ff_norm = nn.LayerNorm(self.hidden_size, elementwise_affine=False, eps=1E-6)
@@ -264,13 +264,6 @@ class DIT(nn.Module):
     def __init__(self, 
                  im_size = 32,  #should be 128
                  im_channels = 4, #should be 3
-                 config = {
-                        'patch_size' : 2,
-                        'hidden_size' : 768,
-                        'num_heads' : 12,
-                        'head_dim' : 64,
-                        'timestep_emb_dim' : 768
-                        }
                 ):
 
         super().__init__()
@@ -305,18 +298,18 @@ class DIT(nn.Module):
 
         # All Transformer Layers
         self.layers = nn.ModuleList([
-            TransformerLayer(config),
-            TransformerLayer(config),
-            TransformerLayer(config),
-            TransformerLayer(config),
-            TransformerLayer(config),
-            TransformerLayer(config),
-            TransformerLayer(config),
-            TransformerLayer(config),
-            TransformerLayer(config),
-            TransformerLayer(config),
-            TransformerLayer(config),
-            TransformerLayer(config),
+            TransformerLayer(),
+            TransformerLayer(),
+            TransformerLayer(),
+            TransformerLayer(),
+            TransformerLayer(),
+            TransformerLayer(),
+            TransformerLayer(),
+            TransformerLayer(),
+            TransformerLayer(),
+            TransformerLayer(),
+            TransformerLayer(),
+            TransformerLayer(),
                     ])
 
         # Final normalization for unpatchify block

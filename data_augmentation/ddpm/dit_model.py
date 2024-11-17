@@ -1,7 +1,5 @@
 import torch
 import torch.nn as nn
-from model.patch_embed import PatchEmbedding
-from model.transformer_layer import TransformerLayer
 from einops import rearrange
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')

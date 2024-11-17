@@ -47,12 +47,9 @@ class Attention(nn.Module):
         # -> Batch Size x Number of Patches x (Heads * Head Dimension)
         # -> Batch Size x Heads x Number of Patches x Head Dimension
         # -> B x H x N x Head Dimension
-        q = rearrange(q, 'b n (n_h h_dim) -> b n_h n h_dim',
-                      n_h=self.n_heads, h_dim=self.head_dim)
-        k = rearrange(k, 'b n (n_h h_dim) -> b n_h n h_dim',
-                      n_h=self.n_heads, h_dim=self.head_dim)
-        v = rearrange(v, 'b n (n_h h_dim) -> b n_h n h_dim',
-                      n_h=self.n_heads, h_dim=self.head_dim)
+        q = rearrange(q, 'b n (n_h h_dim) -> b n_h n h_dim',n_h=self.n_heads, h_dim=self.head_dim)
+        k = rearrange(k, 'b n (n_h h_dim) -> b n_h n h_dim',n_h=self.n_heads, h_dim=self.head_dim)
+        v = rearrange(v, 'b n (n_h h_dim) -> b n_h n h_dim',n_h=self.n_heads, h_dim=self.head_dim)
         #########################################################
 
         # Compute Attention Weights
@@ -283,11 +280,11 @@ class DIT(nn.Module):
         self.image_height = im_size
         self.image_width = im_size
         self.im_channels = im_channels
-        self.hidden_size = config['hidden_size']
-        self.patch_height = config['patch_size']
-        self.patch_width = config['patch_size']
+        self.hidden_size = 768
+        self.patch_height = 2
+        self.patch_width = 2
 
-        self.timestep_emb_dim = config['timestep_emb_dim']
+        self.timestep_emb_dim = 768
 
         # Number of patches along height and width
         self.nh = self.image_height // self.patch_height

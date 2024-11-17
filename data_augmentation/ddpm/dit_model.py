@@ -266,7 +266,19 @@ def get_time_embedding(time_steps, temb_dim):
 
 
 class DIT(nn.Module):
-    def __init__(self, im_size, im_channels, config):
+    def __init__(self, 
+                 im_size = 32,  #should be 128
+                 im_channels = 4, #should be 3
+                 config = {
+                        'patch_size' : 2,
+                        'num_layers' : 12,
+                        'hidden_size' : 768,
+                        'num_heads' : 12,
+                        'head_dim' : 64,
+                        'timestep_emb_dim' : 768
+                        }
+                ):
+
         super().__init__()
 
         num_layers = config['num_layers']

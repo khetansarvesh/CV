@@ -271,7 +271,6 @@ class DIT(nn.Module):
                  im_channels = 4, #should be 3
                  config = {
                         'patch_size' : 2,
-                        'num_layers' : 12,
                         'hidden_size' : 768,
                         'num_heads' : 12,
                         'head_dim' : 64,
@@ -281,7 +280,6 @@ class DIT(nn.Module):
 
         super().__init__()
 
-        num_layers = config['num_layers']
         self.image_height = im_size
         self.image_width = im_size
         self.im_channels = im_channels
@@ -312,8 +310,19 @@ class DIT(nn.Module):
 
         # All Transformer Layers
         self.layers = nn.ModuleList([
-            TransformerLayer(config) for _ in range(num_layers)
-        ])
+            TransformerLayer(config),
+            TransformerLayer(config),
+            TransformerLayer(config),
+            TransformerLayer(config),
+            TransformerLayer(config),
+            TransformerLayer(config),
+            TransformerLayer(config),
+            TransformerLayer(config),
+            TransformerLayer(config),
+            TransformerLayer(config),
+            TransformerLayer(config),
+            TransformerLayer(config),
+                    ])
 
         # Final normalization for unpatchify block
         self.norm = nn.LayerNorm(self.hidden_size, elementwise_affine=False, eps=1E-6)

@@ -37,7 +37,7 @@ class ResidualBlock2(nn.Module):
         self.dim_matching_layer = nn.Sequential( 
                             nn.Conv2d(in_channels, out_channels*4, kernel_size = 1, stride = stride, bias = False),
                             nn.BatchNorm2d(out_channels*4)
-                            )),
+                            )
 
     def forward(self, x):
 

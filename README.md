@@ -63,8 +63,8 @@ In image processing our aim is to enhance the image quality
    - **Non-Learning Based Method:** This was used earlier and not used anymore. This required 2 camera setup and hence called stereo pair. This method is called stereo vision.
    - **Learning-Based Method:** This method is SOTA and requires only 1 camera setup. Hence called monocular depth estimation (MDE). There have been many proposed models but the few best models are 
         - a. MiDas Model (2019)
-        - b. Depth Anything Model V1 (Early 2024)
-        - c. Depth Anything Model V2 (Late 2024, SOTA)
+        - b. [Depth Anything Model V1](https://depth-anything.github.io/) (Early 2024)
+        - c. [Depth Anything Model V2](https://depth-anything-v2.github.io/) (Late 2024, SOTA)
 
 
 

@@ -43,6 +43,15 @@ Converting non-numerical data into numerical datasets requires domain expertise 
 - Non-Modeling Based Methods
 - Modeling Based Methods
 
+
+
+
+
+
+
+
+
+
 ## Downstream Computer Vision Tasks
 
 ### Non-Generative Tasks (Supervised CV)
@@ -71,6 +80,13 @@ Converting non-numerical data into numerical datasets requires domain expertise 
      - MiDas Model (2019)
      - Depth Anything Model V1 (Early 2024)
      - Depth Anything Model V2 (Late 2024, SOTA)
+
+
+
+
+
+
+
 
 ## Datasets
 

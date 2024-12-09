@@ -47,10 +47,10 @@ In image processing our aim is to enhance the image quality
 
 ### Non-Generative Tasks (Supervised CV)
 
-1. Object Localization / Image Classification + Localization
-2. Object Detection / Recognition
-3. Semantic Segmentation
-4. Instance Segmentation / Simultaneous Detection and Segmentation (SDS)
+1. [Object Localization / Image Classification + Localization Task](https://pub.towardsai.net/computer-vision-object-localization-task-2d536238510f)
+2. [Object Detection / Recognition Task](https://pub.towardsai.net/computer-vision-object-detection-task-b572d58f2ada)
+3. [Semantic Segmentation Task](https://levelup.gitconnected.com/semantic-segmentation-models-clearly-explained-780bde9515b5)
+4. Instance Segmentation / Simultaneous Detection and Segmentation (SDS) Task
    - Advanced form of object detection with precise object outlines
 
 ### Generative Tasks (Unsupervised CV)

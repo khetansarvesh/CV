@@ -1,5 +1,3 @@
-# Computer Vision (CV)
-
 # Digital Image Preprocessing
 
 Digital image preprocessing involves manipulating input images to produce modified output images, enhancing their suitability for computer vision applications. This process aims to reveal hidden details or highlight specific areas of interest, resulting in a more suitable feature set for analysis.
@@ -38,7 +36,17 @@ Converting non-numerical data into numerical datasets requires domain expertise 
 - Resize images with odd dimensions
 - Remove low-information images
 
-## Representation Learning / Tokenization
+
+
+
+
+
+
+
+
+
+
+# Representation Learning / Tokenization
 
 - Non-Modeling Based Methods
 - Modeling Based Methods
@@ -52,7 +60,7 @@ Converting non-numerical data into numerical datasets requires domain expertise 
 
 
 
-## Downstream Computer Vision Tasks
+# Downstream Computer Vision Tasks
 
 ### Non-Generative Tasks (Supervised CV)
 
@@ -88,6 +96,8 @@ Converting non-numerical data into numerical datasets requires domain expertise 
 
 
 
-## Datasets
+
+
+# Datasets
 
 For a comprehensive list of datasets, refer to relevant computer vision resources and repositories.

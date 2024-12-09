@@ -1,4 +1,4 @@
-# Panoptic Segmentation
+# Panoptic Segmentation Task
 
 
 # ************** Problem Statement **************

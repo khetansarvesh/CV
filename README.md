@@ -1,4 +1,4 @@
-# ######## Digital Image Preprocessing ########
+# ********** Digital Image Preprocessing **********
 
 In image processing our aim is to enhance the image quality
 

@@ -1,6 +1,7 @@
 # ********** Digital Image Preprocessing **********
 
-In image processing our aim is to enhance the image quality
+In image processing our aim is to enhance the image quality in the image dataset that we are dealing with. For a comprehensive list of datasets, refer to this [linkedin post](https://www.linkedin.com/feed/update/urn:li:activity:7269031439713656832/) by me.
+
 1. Normalizing Image : Convert pixel values from 0-255 to 0-1 range
 2. Illumination Correction : Various methods available, choose based on project requirements and previous research
 3. [Handling Noise](https://github.com/khetansarvesh/CV/blob/main/notes/Handling_Noise.pdf)
@@ -57,16 +58,3 @@ In image processing our aim is to enhance the image quality
         - a. MiDas Model (2019)
         - b. [Depth Anything Model V1](https://depth-anything.github.io/) (Early 2024)
         - c. [Depth Anything Model V2](https://depth-anything-v2.github.io/) (Late 2024, SOTA)
-
-
-
-
-
-
-
-
-
-
-# ******************** Datasets ********************
-
-For a comprehensive list of datasets, refer to this [linkedin post](https://www.linkedin.com/feed/update/urn:li:activity:7269031439713656832/) by me.

@@ -11,7 +11,15 @@ In this above image we are not doing multiple key point detection but we can do 
 Read [2 stage model from Object localization task](https://pub.towardsai.net/computer-vision-object-localization-task-2d536238510f) before doing this, it is on the similar lines
 
 
-### Method 1 : 
+### Method 1 : Sliding Window Method
+- First you select difference window sizes of different aspect ratio
+- Then you resize it so that you can pass it to a model
+- And now for each sliding window you perform bounding box prediction + class prediction + segmentation mask prediction
+
+
+- *[Fast Sliding Window Method]* Now above we can see on first applying the sliding window followed by CNN we are computing features again and again and hence we can fasten this process by first computing feature map using CNN and then doing sliding window on the feature map. This will prevent recomputation of same features again and again
+
+![alt text](https://github.com/khetansarvesh/CV/blob/main/panoptic_segmentation/Architecture.png)
 
 
 ### Method 2 : Region Based CNN (RCNN) Method

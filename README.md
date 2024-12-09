@@ -38,7 +38,7 @@ Here our aim is to enhance the image quality in the image dataset that we are de
 
 # **********  Non-Generative Downstream CV Tasks (Supervised CV)  **********
 
-1. Object Classification
+1. [Object Classification](https://github.com/khetansarvesh/CV/tree/main/im_classification)
 2. [Object Localization / Image Classification + Localization Task](https://pub.towardsai.net/computer-vision-object-localization-task-2d536238510f)
 3. [Object Detection / Recognition Task](https://pub.towardsai.net/computer-vision-object-detection-task-b572d58f2ada)
 
@@ -58,8 +58,8 @@ Here our aim is to enhance the image quality in the image dataset that we are de
    - Now during test time you will not know how many people will be there in the image. There can be 5 / 10 / 1000, we saw this similar kind of issue in case of object detection tasks.
    - Hence use the same strategy as used in the Object Detection task to solve this issue here.
 
-8. Panoptic Segmentation Task
-9. Photo Optical Camera Recognition (OCR) Task
+8. [Panoptic Segmentation Task](https://github.com/khetansarvesh/CV/tree/main/panoptic_segmentation)
+9. [Photo Optical Camera Recognition (OCR) Task](https://github.com/khetansarvesh/CV/tree/main/ocr)
 
 
 

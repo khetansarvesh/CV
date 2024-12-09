@@ -50,7 +50,7 @@ Here our aim is to enhance the image quality in the image dataset that we are de
 6. Single Human Key-Point Detection / Pose Estimation Task : 
    - Problem Statement : Represent a person by K points. Most of the time K =14 cause almost everyone has 14 joints. Refer this image [here](https://github.com/khetansarvesh/CV/blob/main/notes/pose_estimation_prb_statement.png).
    - Solution Architecture : 
-      1. This is very similar to Image Classification Architecture just that in the output layer you add 14*2 neurons representing coordinates of all these 14 joints. Refer architecture diagram [here]() 
+      1. This is very similar to Image Classification Architecture just that in the output layer you add 14*2 neurons representing coordinates of all these 14 joints. Refer architecture diagram [here](https://github.com/khetansarvesh/CV/blob/main/notes/pose_estimation_arch.png) 
       2. Instead of classification this is a regression problem hence loss function = Regression Loss = L2 Loss
    - If you change the dataset this same approach can also be used for other similar tasks like [Face Mesh Detection](https://ai.google.dev/static/edge/mediapipe/images/solutions/examples/face_landmark.png) / [Hand Detection](https://learnopencv.com/wp-content/uploads/2018/10/hand-output-skeleton.jpg) 
 7. Multiple Human Key Point Detection Task : 

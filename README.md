@@ -29,7 +29,7 @@ In image processing our aim is to enhance the image quality
 
 
 
-# ********** Representation Learning / Tokenization **********
+# **** Representation Learning / Tokenization ****
 
 - [Non-Modeling Based Methods](https://khetansarvesh.medium.com/non-modelling-methods-for-image-representation-learning-5a3b80a31a29)
 - [Modeling Based Methods](https://www.google.com/url?q=https://khetansarvesh.medium.com/modelling-based-methods-for-image-representation-learning-48cd5f56ad0d&sa=D&source=docs&ust=1733758892238210&usg=AOvVaw1HeO_DRIuK6YLyDS-Ne3gT)
@@ -75,6 +75,6 @@ In image processing our aim is to enhance the image quality
 
 
 
-# ********** Datasets **********
+# ******************** Datasets ********************
 
 For a comprehensive list of datasets, refer to this [linkedin post](https://www.linkedin.com/feed/update/urn:li:activity:7269031439713656832/) by me.

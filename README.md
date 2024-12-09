@@ -36,11 +36,9 @@ Here our aim is to enhance the image quality in the image dataset that we are de
 
 
 
-# ********** Downstream Computer Vision Tasks **********
+# **********  Non-Generative Downstream CV Tasks (Supervised CV)  **********
 
-### Non-Generative Tasks (Supervised CV)
-
-1.
+1. Object Classification
 2. [Object Localization / Image Classification + Localization Task](https://pub.towardsai.net/computer-vision-object-localization-task-2d536238510f)
 3. [Object Detection / Recognition Task](https://pub.towardsai.net/computer-vision-object-detection-task-b572d58f2ada)
 
@@ -63,7 +61,11 @@ Here our aim is to enhance the image quality in the image dataset that we are de
 8. Panoptic Segmentation Task
 9. Photo Optical Camera Recognition (OCR) Task
 
-### Generative Tasks (Unsupervised CV)
+
+
+
+
+# **********  Generative Downstream CV Tasks (UnSupervised CV)  **********
 
 1. [Style Transfer](https://khetansarvesh.medium.com/image2image-translation-task-588d134e9ee8)
 

@@ -59,7 +59,14 @@ Here our aim is to enhance the image quality in the image dataset that we are de
    - Hence use the same strategy as used in the Object Detection task to solve this issue here.
 
 8. [Panoptic Segmentation Task](https://github.com/khetansarvesh/CV/tree/main/panoptic_segmentation)
-9. [Photo Optical Camera Recognition (OCR) Task](https://github.com/khetansarvesh/CV/tree/main/ocr)
+9. Photo Optical Camera Recognition (OCR) Task
+    - Problem Statement : Identify the texts present in the image, as shown in image [here](https://github.com/khetansarvesh/CV/blob/main/notes/ocr_prb_statement.png)
+    - Solution :
+      a. Step 1 : Text Bounding Box Detection => Identify the regions in the image which have text using the object detection model. Refer image [here](https://github.com/khetansarvesh/CV/blob/main/notes/txt_det.png)
+      b. Step 2 : Character Segmentation => Now for each of the text region, you need to segment out the character in that text. Refer image [here](https://github.com/khetansarvesh/CV/blob/main/notes/char_seg.png)
+      c. Step 3 : Character Classification => Now for each segmented character you need to run a character classification model. Refer image [here](https://github.com/khetansarvesh/CV/blob/main/notes/char_class.png)
+
+
 
 
 

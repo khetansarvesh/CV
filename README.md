@@ -1,14 +1,14 @@
 # ********** Digital Image Preprocessing **********
 
 In image processing our aim is to enhance the image quality
-- 1. Normalizing Image : Convert pixel values from 0-255 to 0-1 range
-- 2. Illumination Correction : Various methods available, choose based on project requirements and previous research
-- 3. [Handling Noise](https://github.com/khetansarvesh/CV/blob/main/notes/Handling_Noise.pdf)
-- 4. Duplicate Image Removal : Check if there are duplicate images or not (both exact and near duplicates) and remove if any
-- 5. Remove blurry images
-- 6. Remove images with unusual aspect ratios
-- 7. Resize images with odd dimensions : Check if there are images with odd size, if yes then resize them
-- 8. Remove low-information images
+1. Normalizing Image : Convert pixel values from 0-255 to 0-1 range
+2. Illumination Correction : Various methods available, choose based on project requirements and previous research
+3. [Handling Noise](https://github.com/khetansarvesh/CV/blob/main/notes/Handling_Noise.pdf)
+4. Duplicate Image Removal : Check if there are duplicate images or not (both exact and near duplicates) and remove if any
+5. Remove blurry images
+6. Remove images with unusual aspect ratios
+7. Resize images with odd dimensions : Check if there are images with odd size, if yes then resize them
+8. Remove low-information images
 
 
 

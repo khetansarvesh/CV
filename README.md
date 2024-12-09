@@ -1,36 +1,19 @@
 # Digital Image Preprocessing
 
-Digital image preprocessing involves manipulating input images to produce modified output images, enhancing their suitability for computer vision applications. This process aims to reveal hidden details or highlight specific areas of interest, resulting in a more suitable feature set for analysis.
+In image processing our aim is to enhance the image quality
 
-## Understanding Images
-
-Images are essentially matrices of numbers, representing:
-- RGB color channels
-- Binary data (0s and 1s)
-
-## Dimensionality Reduction
-
-To compress images and reduce their dimensions, we can employ unsupervised learning techniques:
-- Principal Component Analysis (PCA) is often the most effective method
-
-## Feature Extraction
-
-Converting non-numerical data into numerical datasets requires domain expertise to identify relevant features that accurately define the image for the specific problem statement.
-
-## Image Enhancement Techniques
-
-### Normalizing Image
+### 1. Normalizing Image
 - Convert pixel values from 0-255 to 0-1 range
 
-### Illumination Correction
+### 2. Illumination Correction
 - Various methods available, choose based on project requirements and previous research
 
-### Handling Noise
+### 3. Handling Noise
 
-### Duplicate Image Removal
+### 4. Duplicate Image Removal
 - Check for exact and near-duplicate images
 
-### Image Quality Control
+### 5. Image Quality Control
 - Remove blurry images
 - Remove images with unusual aspect ratios
 - Resize images with odd dimensions

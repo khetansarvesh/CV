@@ -56,10 +56,10 @@ In image processing our aim is to enhance the image quality
 
 ### Generative Tasks (Unsupervised CV)
 
-1. Style Transfer
+1. [Style Transfer](https://khetansarvesh.medium.com/image2image-translation-task-588d134e9ee8)
 
 2. Depth Estimation
-   - Challenging task: understanding 3D structure from 2D images
+   - It is a difficult task because it requires the model to understand 3D structure using only 2D images. There are two ways to solve this.
    
    **Non-Learning Based Method:**
    - Stereo vision (outdated)

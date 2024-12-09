@@ -42,14 +42,14 @@ Here our aim is to enhance the image quality in the image dataset that we are de
 
 1. [Object Localization / Image Classification + Localization Task](https://pub.towardsai.net/computer-vision-object-localization-task-2d536238510f)
 2. [Object Detection / Recognition Task](https://pub.towardsai.net/computer-vision-object-detection-task-b572d58f2ada)
-3. [Semantic Segmentation Task](https://levelup.gitconnected.com/semantic-segmentation-models-clearly-explained-780bde9515b5)
-4. Instance Segmentation / Simultaneous Detection and Segmentation (SDS) Task : 
+4. [Semantic Segmentation Task](https://levelup.gitconnected.com/semantic-segmentation-models-clearly-explained-780bde9515b5)
+5. Instance Segmentation / Simultaneous Detection and Segmentation (SDS) Task : 
    - This is an advanced form of object detection task, in object detection task you just made bounding boxes but here you can make exact outline of the object
    - Check out this image [here](https://miro.medium.com/v2/resize:fit:1100/format:webp/1*SNvD04dEFIDwNAqSXLQC_g.jpeg)
-5. Single Human Key-Point Detection / Pose Estimation Task
-6. Multiple Human Key Point Detection Task
-7. Panoptic Segmentation Task
-8. Photo Optical Camera Recognition (OCR) Task
+6. Single Human Key-Point Detection / Pose Estimation Task : Here the problem statement is to represent a person by K points. Refer this image here.
+7. Multiple Human Key Point Detection Task
+8. Panoptic Segmentation Task
+9. Photo Optical Camera Recognition (OCR) Task
 
 ### Generative Tasks (Unsupervised CV)
 

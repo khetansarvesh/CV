@@ -40,20 +40,26 @@ Here our aim is to enhance the image quality in the image dataset that we are de
 
 ### Non-Generative Tasks (Supervised CV)
 
-1. [Object Localization / Image Classification + Localization Task](https://pub.towardsai.net/computer-vision-object-localization-task-2d536238510f)
-2. [Object Detection / Recognition Task](https://pub.towardsai.net/computer-vision-object-detection-task-b572d58f2ada)
+1.
+2. [Object Localization / Image Classification + Localization Task](https://pub.towardsai.net/computer-vision-object-localization-task-2d536238510f)
+3. [Object Detection / Recognition Task](https://pub.towardsai.net/computer-vision-object-detection-task-b572d58f2ada)
+
 4. [Semantic Segmentation Task](https://levelup.gitconnected.com/semantic-segmentation-models-clearly-explained-780bde9515b5)
 5. Instance Segmentation / Simultaneous Detection and Segmentation (SDS) Task : 
    - This is an advanced form of object detection task, in object detection task you just made bounding boxes but here you can make exact outline of the object
    - Check out this image [here](https://miro.medium.com/v2/resize:fit:1100/format:webp/1*SNvD04dEFIDwNAqSXLQC_g.jpeg)
+
 6. Single Human Key-Point Detection / Pose Estimation Task : 
    - Problem Statement : Represent a person by K points. Most of the time K =14 cause almost everyone has 14 joints. Refer this image [here](https://github.com/khetansarvesh/CV/blob/main/notes/pose_estimation_prb_statement.png).
    - Solution Architecture : 
-      1. This is very similar to Image Classification Architecture just that in the output layer you add 14*2 neurons representing coordinates of all these 14 joints and 
-      2. Instead of classification this is a regression problem?
-      3. Loss Function to train the network = Regression Loss = L2 Loss
+      1. This is very similar to Image Classification Architecture just that in the output layer you add 14*2 neurons representing coordinates of all these 14 joints. Refer architecture diagram [here]() 
+      2. Instead of classification this is a regression problem hence loss function = Regression Loss = L2 Loss
    - If you change the dataset this same approach can also be used for other similar tasks like [Face Mesh Detection](https://ai.google.dev/static/edge/mediapipe/images/solutions/examples/face_landmark.png) / [Hand Detection](https://learnopencv.com/wp-content/uploads/2018/10/hand-output-skeleton.jpg) 
-7. Multiple Human Key Point Detection Task
+7. Multiple Human Key Point Detection Task : 
+   - Same as above single human key point detection problem just that here we have multiple persons and for each person you need to do key point detection. 
+   - Now during test time you will not know how many people will be there in the image. There can be 5 / 10 / 1000, we saw this similar kind of issue in case of object detection tasks.
+   - Hence use the same strategy as used in the Object Detection task to solve this issue here.
+
 8. Panoptic Segmentation Task
 9. Photo Optical Camera Recognition (OCR) Task
 

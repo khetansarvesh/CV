@@ -76,7 +76,7 @@ Here our aim is to enhance the image quality in the image dataset that we are de
 
 # **********  Generative Downstream CV Tasks (UnSupervised CV)  **********
 
-1.Low Resolution Image to High Resolution Image
+1. Low Resolution Image to High Resolution Image
 
     a. SR GANs : [Paper Walkthrough](https://www.youtube.com/watch?v=fx-rXMcKlQc&list=PLhhyoLH6IjfwIp8bZnzX8QR30TRcHO8Va&index=14) || [Implementation](https://www.youtube.com/watch?v=7FO9qDOhRCc)
     

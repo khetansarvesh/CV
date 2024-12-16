@@ -78,13 +78,11 @@ Here our aim is to enhance the image quality in the image dataset that we are de
 
 1. Low Resolution Image to High Resolution Image
 
-    a. SR GANs : [Paper Walkthrough](https://www.youtube.com/watch?v=fx-rXMcKlQc&list=PLhhyoLH6IjfwIp8bZnzX8QR30TRcHO8Va&index=14) || [Implementation](https://www.youtube.com/watch?v=7FO9qDOhRCc)
+    a. [2016] SR GANs : [Paper Walkthrough](https://www.youtube.com/watch?v=fx-rXMcKlQc&list=PLhhyoLH6IjfwIp8bZnzX8QR30TRcHO8Va&index=14) || [Implementation](https://www.youtube.com/watch?v=7FO9qDOhRCc)
+        
+    b. [2017] Progressive GANs (ProGANs) : [Paper Walkthrough](https://www.youtube.com/watch?v=lhs78if-E7E) || [Implementation](https://www.youtube.com/watch?v=nkQHASviYac)
     
-    b. Enhanced SR (ESR) GANs : [Paper Walkthrough](https://www.youtube.com/watch?v=qwYOlXRdADI) || [Implementation](https://www.youtube.com/watch?v=ZM4_s5dAWpI)
-    
-    c. [2017] Progressive GANs (ProGANs) : [Paper Walkthrough](https://www.youtube.com/watch?v=lhs78if-E7E) || [Implementation](https://www.youtube.com/watch?v=nkQHASviYac)
-    
-    d. [2018] Style GANs : [Video1](https://www.youtube.com/watch?v=qZuoU23ACTo) || [Video2](https://www.youtube.com/watch?v=TmN9SDqWKPk) || [Video3](https://www.youtube.com/watch?v=b3KGSsNSzZg)
+    c. [2018] Style GANs : [Video1](https://www.youtube.com/watch?v=qZuoU23ACTo) || [Video2](https://www.youtube.com/watch?v=TmN9SDqWKPk) || [Video3](https://www.youtube.com/watch?v=b3KGSsNSzZg)
     
 
 2. [Image2Image Translation](https://khetansarvesh.medium.com/image2image-translation-task-588d134e9ee8) => Style Transfer / ...

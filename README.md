@@ -68,7 +68,11 @@ Here our aim is to enhance the image quality in the image dataset that we are de
       b. Step 2 : Character Segmentation => Now for each of the text region, you need to segment out the character in that text. Refer image [here](https://github.com/khetansarvesh/CV/blob/main/notes/char_seg.png)
 
       c. Step 3 : Character Classification => Now for each segmented character you need to run a character classification model. Refer image [here](https://github.com/khetansarvesh/CV/blob/main/notes/char_class.png)
-
+10. Low Resolution Image to High Resolution Image
+       a. SR GANs : [Paper Walkthrough](https://www.youtube.com/watch?v=fx-rXMcKlQc&list=PLhhyoLH6IjfwIp8bZnzX8QR30TRcHO8Va&index=14) || [Implementation](https://www.youtube.com/watch?v=7FO9qDOhRCc)
+       b. Enhanced SR (ESR) GANs : [Paper Walkthrough](https://www.youtube.com/watch?v=qwYOlXRdADI) || [Implementation](https://www.youtube.com/watch?v=ZM4_s5dAWpI)
+       c. Progressive GANs (ProGAN) : [Paper Walkthrough](https://www.youtube.com/watch?v=lhs78if-E7E) || [Implementation](https://www.youtube.com/watch?v=nkQHASviYac)
+       d. Style GANs : [Video1](https://www.youtube.com/watch?v=qZuoU23ACTo) || [Video2](https://www.youtube.com/watch?v=TmN9SDqWKPk) || [Video3](https://www.youtube.com/watch?v=b3KGSsNSzZg)
 
 
 
@@ -77,12 +81,8 @@ Here our aim is to enhance the image quality in the image dataset that we are de
 
 # **********  Generative Downstream CV Tasks (UnSupervised CV)  **********
 
-1. [Image2Image Translation](https://khetansarvesh.medium.com/image2image-translation-task-588d134e9ee8)
-   - Style Transfer
-   - Low Resolution Image to High Resolution Image
-   - ...
-
-3. Depth Estimation
+1. [Image2Image Translation](https://khetansarvesh.medium.com/image2image-translation-task-588d134e9ee8) => Style Transfer / ...
+2. Depth Estimation
    - It is a difficult task because it requires the model to understand 3D structure using only 2D images. There are two ways to solve this.
    - **Non-Learning Based Method:** This was used earlier and not used anymore. This required 2 camera setup and hence called stereo pair. This method is called stereo vision.
    - **Learning-Based Method:** This method is SOTA and requires only 1 camera setup. Hence called monocular depth estimation (MDE). There have been many proposed models but the few best models are 

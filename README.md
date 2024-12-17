@@ -83,7 +83,14 @@ Here our aim is to enhance the image quality in the image dataset that we are de
     b. [2017] Progressive GANs (ProGANs) : [Paper Walkthrough](https://www.youtube.com/watch?v=lhs78if-E7E) || [Implementation](https://www.youtube.com/watch?v=nkQHASviYac)
     
     c. [2018] Style GANs : [Video1](https://www.youtube.com/watch?v=qZuoU23ACTo) || [Video2](https://www.youtube.com/watch?v=TmN9SDqWKPk) || [Video3](https://www.youtube.com/watch?v=b3KGSsNSzZg)
-    
+
+    Similarly if you change the dataset then you can also do following tasks which these exact architectures
+      - B/W Image to Colour Image
+      - Blurry Image to Sharp Image
+      - Day Image to Night Image
+      - Summer Image to Winter Image
+      - Noisy Image to Clean Image
+      - ... 
 
 2. [Image2Image Translation](https://khetansarvesh.medium.com/image2image-translation-task-588d134e9ee8) => Style Transfer / ...
 3. Depth Estimation

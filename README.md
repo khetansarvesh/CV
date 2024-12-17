@@ -80,7 +80,6 @@ Here our aim is to enhance the image quality in the image dataset that we are de
 
     a. [2016] SR GANs : [Paper Walkthrough](https://www.youtube.com/watch?v=fx-rXMcKlQc&list=PLhhyoLH6IjfwIp8bZnzX8QR30TRcHO8Va&index=14) || [Implementation](https://www.youtube.com/watch?v=7FO9qDOhRCc)
         
-    b. [2017] Progressive GANs (ProGANs) : [Paper Walkthrough](https://www.youtube.com/watch?v=lhs78if-E7E) || [Implementation](https://www.youtube.com/watch?v=nkQHASviYac)
     
     c. [2018] Style GANs : [Video1](https://www.youtube.com/watch?v=qZuoU23ACTo) || [Video2](https://www.youtube.com/watch?v=TmN9SDqWKPk) || [Video3](https://www.youtube.com/watch?v=b3KGSsNSzZg)
 

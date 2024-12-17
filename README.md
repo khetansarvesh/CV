@@ -76,9 +76,8 @@ Here our aim is to enhance the image quality in the image dataset that we are de
 
 # **********  Generative Downstream CV Tasks (UnSupervised CV)  **********
 
-1. [Low Resolution Image to High Resolution Image](https://khetansarvesh.medium.com/low-resolution-image-2-high-resolution-image-using-neural-networks-149bd43cc988)
-2. [Style Transfer => Image2Image Translation](https://khetansarvesh.medium.com/image2image-translation-task-588d134e9ee8)
-3. Depth Estimation
+1. [Style Transfer => Image2Image Translation](https://khetansarvesh.medium.com/image2image-translation-task-588d134e9ee8)
+2. Depth Estimation
    - It is a difficult task because it requires the model to understand 3D structure using only 2D images. There are two ways to solve this.
    - **Non-Learning Based Method:** This was used earlier and not used anymore. This required 2 camera setup and hence called stereo pair. This method is called stereo vision.
    - **Learning-Based Method:** This method is SOTA and requires only 1 camera setup. Hence called monocular depth estimation (MDE). There have been many proposed models but the few best models are 

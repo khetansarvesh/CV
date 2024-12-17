@@ -77,12 +77,8 @@ Here our aim is to enhance the image quality in the image dataset that we are de
 # **********  Generative Downstream CV Tasks (UnSupervised CV)  **********
 
 1. Low Resolution Image to High Resolution Image
-
     a. [2016] SR GANs : [Paper Walkthrough](https://www.youtube.com/watch?v=fx-rXMcKlQc&list=PLhhyoLH6IjfwIp8bZnzX8QR30TRcHO8Va&index=14) || [Implementation](https://www.youtube.com/watch?v=7FO9qDOhRCc)
         
-    
-    c. [2018] Style GANs : [Video1](https://www.youtube.com/watch?v=qZuoU23ACTo) || [Video2](https://www.youtube.com/watch?v=TmN9SDqWKPk) || [Video3](https://www.youtube.com/watch?v=b3KGSsNSzZg)
-
     Similarly if you change the dataset then you can also do following tasks which these exact architectures
       - B/W Image to Colour Image
       - Blurry Image to Sharp Image

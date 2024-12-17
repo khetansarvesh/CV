@@ -76,17 +76,7 @@ Here our aim is to enhance the image quality in the image dataset that we are de
 
 # **********  Generative Downstream CV Tasks (UnSupervised CV)  **********
 
-1. Low Resolution Image to High Resolution Image
-    a. [2016] SR GANs : [Paper Walkthrough](https://www.youtube.com/watch?v=fx-rXMcKlQc&list=PLhhyoLH6IjfwIp8bZnzX8QR30TRcHO8Va&index=14) || [Implementation](https://www.youtube.com/watch?v=7FO9qDOhRCc)
-        
-    Similarly if you change the dataset then you can also do following tasks which these exact architectures
-      - B/W Image to Colour Image
-      - Blurry Image to Sharp Image
-      - Day Image to Night Image
-      - Summer Image to Winter Image
-      - Noisy Image to Clean Image
-      - ... 
-
+1. [Low Resolution Image to High Resolution Image](https://khetansarvesh.medium.com/low-resolution-image-2-high-resolution-image-using-neural-networks-149bd43cc988)
 2. [Style Transfer => Image2Image Translation](https://khetansarvesh.medium.com/image2image-translation-task-588d134e9ee8)
 3. Depth Estimation
    - It is a difficult task because it requires the model to understand 3D structure using only 2D images. There are two ways to solve this.

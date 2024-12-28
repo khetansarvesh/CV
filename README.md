@@ -41,6 +41,9 @@ Here our aim is to enhance the image quality in the image dataset that we are de
 Note : In [NLP](https://docs.google.com/document/d/18uKePZSgFpufsPhpcLj0rSjsuFPhm6_GcjnRPOrJCog/edit?tab=t.0) we already saw when to use freeze learning / partial finetuning / complete finetuning, same logic also applies here!! 
 
 1. [Object Classification](https://github.com/khetansarvesh/CV/tree/main/im_classification)
+   - Since majority of the foundation models are built on this task we dont need to finetune the foundation models so that it works good for downstream other dataset task, instead we will just extract the last layer representation from the foundation model and then use any classification model to perform the classification.
+   - Now depending on if it is binary classification or multi-class classification we can use any algorithm like KNN / Logistic Regression / Naive Bayes / FLDA / SVM / Decision Tree / … / Neural Network.
+   - [Here](https://github.com/khetansarvesh/CV/blob/main/im_classification/image_classification_freeze_learning.ipynb) is a code implementation using Neural Network!!
 2. [Object Localization / Image Classification + Localization Task](https://pub.towardsai.net/computer-vision-object-localization-task-2d536238510f)
 3. [Object Detection / Recognition Task](https://pub.towardsai.net/computer-vision-object-detection-task-b572d58f2ada)
 

@@ -38,6 +38,8 @@ Here our aim is to enhance the image quality in the image dataset that we are de
 
 # **********  Non-Generative Downstream CV Tasks (Supervised CV)  **********
 
+Note : In [NLP](https://docs.google.com/document/d/18uKePZSgFpufsPhpcLj0rSjsuFPhm6_GcjnRPOrJCog/edit?tab=t.0) we already saw when to use freeze learning / partial finetuning / complete finetuning, same logic also applies here!! 
+
 1. [Object Classification](https://github.com/khetansarvesh/CV/tree/main/im_classification)
 2. [Object Localization / Image Classification + Localization Task](https://pub.towardsai.net/computer-vision-object-localization-task-2d536238510f)
 3. [Object Detection / Recognition Task](https://pub.towardsai.net/computer-vision-object-detection-task-b572d58f2ada)

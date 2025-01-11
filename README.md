@@ -90,3 +90,7 @@ Note : In [NLP](https://docs.google.com/document/d/18uKePZSgFpufsPhpcLj0rSjsuFPh
         - a. MiDas Model (2019)
         - b. [Depth Anything Model V1](https://depth-anything.github.io/) (Early 2024)
         - c. [Depth Anything Model V2](https://depth-anything-v2.github.io/) (Late 2024, SOTA)
+    
+
+# **********  Reinforcement Learning (RL) for Images  **********
+

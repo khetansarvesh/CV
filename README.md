@@ -94,3 +94,5 @@ Note : In [NLP](https://docs.google.com/document/d/18uKePZSgFpufsPhpcLj0rSjsuFPh
 
 # **********  Reinforcement Learning (RL) for Images  **********
 
+Read more about this [here](https://github.com/khetansarvesh/CV/tree/main/reinforcement_learning)
+

@@ -92,7 +92,7 @@ Note : In [NLP](https://docs.google.com/document/d/18uKePZSgFpufsPhpcLj0rSjsuFPh
         - c. [Depth Anything Model V2](https://depth-anything-v2.github.io/) (Late 2024, SOTA)
     
 
-# **********  Reinforcement Learning (RL) for Images  **********
+# **********  Deep Reinforcement Learning (RL) for Images  **********
 
 Read more about this [here](https://github.com/khetansarvesh/CV/tree/main/reinforcement_learning)
 

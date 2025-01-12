@@ -11,9 +11,3 @@ Now above I have describing how to use RL with Neural Networks but earlier peopl
 7. Multimodal RL from CMU
 - [Part 1](https://www.youtube.com/watch?v=OI02F2XEe_0&list=PL-Fhd_vrvisNup9YQs_TdLW7DQz-lda0G&index=16)
 - [Part 2](https://www.youtube.com/watch?v=UsAgvMC5fRs&list=PL-Fhd_vrvisNup9YQs_TdLW7DQz-lda0G&index=17)
-
-Following are not courses but are good reads
-- [PPO Algorithm Impolementation](https://iclr-blog-track.github.io/2022/03/25/ppo-implementation-details/)
-- [Robot localization using Hidden Markov Models](https://dtransposed.github.io/blog/2018/04/01/Robot-Localization/)
-- [RL with Unity 3D](https://dtransposed.github.io/blog/2019/03/10/GEAR/)
-- [Understanding AlphaGo Zero](https://dtransposed.github.io/blog/2019/05/16/Alpha-Zero-1/)

@@ -17,5 +17,3 @@ Following are not courses but are good reads
 - [Robot localization using Hidden Markov Models](https://dtransposed.github.io/blog/2018/04/01/Robot-Localization/)
 - [RL with Unity 3D](https://dtransposed.github.io/blog/2019/03/10/GEAR/)
 - [Understanding AlphaGo Zero](https://dtransposed.github.io/blog/2019/05/16/Alpha-Zero-1/)
-- [Q Learning](https://www.youtube.com/watch?v=nOBm4aYEYR4)
-- [Q Learning Math](https://towardsdatascience.com/math-of-q-learning-python-code-5dcbdc49b6f6)

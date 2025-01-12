@@ -5,11 +5,10 @@ Now above I have describing how to use RL with Neural Networks but earlier peopl
 1. [Lectures from David Silver](https://www.davidsilver.uk/teaching/) (Google Deepmind)
 2. [John Schulman](https://www.youtube.com/watch?v=PtAIh9KSnjo) (OpenAI)
 3. [Google Deepmind x UCL Course](https://www.youtube.com/playlist?list=PLqYmG7hTraZDVH599EItlEWsUOsJbAodm)
-4. [Spinning Up](https://spinningup.openai.com/en/latest/index.html) from OpenAI
-5. [CS 285](https://www.youtube.com/watch?v=JHrlF10v2Og&list=PL_iWQOsE6TfURIIhCrlt-wj9ByIVpbfGc) from UC Berkley
-6. [CS 234](https://www.youtube.com/watch?v=FgzM3zpZ55o&list=PLoROMvodv4rOSOPzutgyCTapiGlY2Nd8u) from Standford
-7. [IIT Madras Course](https://www.youtube.com/playlist?list=PLEAYkSg4uSQ0Hkv_1LHlJtC_wqwVu6RQX)
-8. Multimodal RL from CMU
+4. [CS 285](https://www.youtube.com/watch?v=JHrlF10v2Og&list=PL_iWQOsE6TfURIIhCrlt-wj9ByIVpbfGc) from UC Berkley
+5. [CS 234](https://www.youtube.com/watch?v=FgzM3zpZ55o&list=PLoROMvodv4rOSOPzutgyCTapiGlY2Nd8u) from Standford
+6. [IIT Madras Course](https://www.youtube.com/playlist?list=PLEAYkSg4uSQ0Hkv_1LHlJtC_wqwVu6RQX)
+7. Multimodal RL from CMU
 - [Part 1](https://www.youtube.com/watch?v=OI02F2XEe_0&list=PL-Fhd_vrvisNup9YQs_TdLW7DQz-lda0G&index=16)
 - [Part 2](https://www.youtube.com/watch?v=UsAgvMC5fRs&list=PL-Fhd_vrvisNup9YQs_TdLW7DQz-lda0G&index=17)
 

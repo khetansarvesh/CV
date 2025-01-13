@@ -94,15 +94,15 @@ Note : In [NLP](https://docs.google.com/document/d/18uKePZSgFpufsPhpcLj0rSjsuFPh
 
 # **********  Reinforcement Learning (RL) for Images  **********
 
-### <ins> Task : </ins> Playing Ping Pong Atari Game
+### <ins> Task : Playing Ping Pong Atari Game </ins> 
 
-### <ins> Method 1 : </ins> Deep Reinforcement Learning
+### <ins> Method 1 : Deep Reinforcement Learning </ins> 
  There are essentially 3 ways to use Neural Networks for Reinforcement Learning : 
 - Q Learning / Value Learning / Value Neural Network
 - Policy Learning / Policy Neural Network
 - Action Critic - combining both Q-Learning and Policy-Learning
 
-### <ins> Method 2 : </ins> Traditional Reinforcement Learning
+### <ins> Method 2 : Traditional Reinforcement Learning </ins> 
 Above we saw all the implementation using Neural Networks but earlier people used MDPs to model these instead of Neural Networks. Since MDPs were not scalable, Neural Networks became prominent. You can understand this here in this [video](https://www.youtube.com/watch?v=SgC6AZss478&list=PLs8w1Cdi-zvYviYYw_V3qe6SINReGF5M-&index=4) very clearly. 
 
 But if you still want to learn more about how to use RL with MDPs I would recommend following courses to you (watch in the given sequence)

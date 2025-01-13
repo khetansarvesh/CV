@@ -100,7 +100,7 @@ Here we will take the task of <ins> playing Ping Pong Atari Game </ins>. There 
    - PPO
    - DPO
    - There are many other algorithms and to learn these I would highly recommend spending months with the [resource created by OpenAI](https://spinningup.openai.com/en/latest/index.html)
-- Action Critik - combining both Q learning and Value Learning
+- Action Critic - combining both Q-Learning and Policy-Learning
 
 
 Above we saw all the implementation using Neural Networks but earlier people used MDPs to model these instead of Neural Networks. Since MDPs were not scalable, Neural Networks became prominent. You can understand this here in this [video](https://www.youtube.com/watch?v=SgC6AZss478&list=PLs8w1Cdi-zvYviYYw_V3qe6SINReGF5M-&index=4) very clearly. 

@@ -98,8 +98,8 @@ Note : In [NLP](https://docs.google.com/document/d/18uKePZSgFpufsPhpcLj0rSjsuFPh
 
 ### <ins> Method 1 : Deep Reinforcement Learning </ins> 
  There are essentially 3 ways to use Neural Networks for Reinforcement Learning : 
-- Q Learning / Value Learning
-- Policy Learning
+- Q Learning / Value Learning By Google Deepmind : Seeing RL problem as Regression Problem
+- [Better Approach] Policy Learning : seeing RL problem as Classification Problem
 - Action Critic - combining both Q-Learning and Policy-Learning
 
 ### <ins> Method 2 : Traditional Reinforcement Learning </ins> 

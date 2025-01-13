@@ -96,10 +96,6 @@ Note : In [NLP](https://docs.google.com/document/d/18uKePZSgFpufsPhpcLj0rSjsuFPh
 Here we will take the task of <ins> playing Ping Pong Atari Game </ins>. There are essentially 3 ways to use Neural Networks for Reinforcement Learning : 
 - Q Learning / Value Learning / Value Neural Network
 - Policy Learning / Policy Neural Network
-   - Vanilla Proximal Gradient
-   - PPO
-   - DPO
-   - There are many other algorithms and to learn these I would highly recommend spending months with the [resource created by OpenAI](https://spinningup.openai.com/en/latest/index.html)
 - Action Critic - combining both Q-Learning and Policy-Learning
 
 

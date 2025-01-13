@@ -94,9 +94,10 @@ Note : In [NLP](https://docs.google.com/document/d/18uKePZSgFpufsPhpcLj0rSjsuFPh
 
 # **********  Reinforcement Learning (RL) for Images  **********
 
+### <ins> Task : Here we will take the task of playing Ping Pong Atari Game </ins>
 
 ### <ins> Deep Reinforcement Learning </ins>
-Here we will take the task of <ins> playing Ping Pong Atari Game </ins>. There are essentially 3 ways to use Neural Networks for Reinforcement Learning : 
+ There are essentially 3 ways to use Neural Networks for Reinforcement Learning : 
 - Q Learning / Value Learning / Value Neural Network
 - Policy Learning / Policy Neural Network
 - Action Critic - combining both Q-Learning and Policy-Learning

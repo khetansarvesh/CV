@@ -94,9 +94,13 @@ Note : In [NLP](https://docs.google.com/document/d/18uKePZSgFpufsPhpcLj0rSjsuFPh
 
 # **********  Deep Reinforcement Learning (RL) for Images  **********
 Here we will take the task of <ins> playing Ping Pong Atari Game </ins>. There are essentially 3 ways to use Neural Networks for Reinforcement Learning : 
-1. Q Learning / Value Learning / Value Neural Network
-2. Value Learning
-3. Action Critik - combining both Q learning and Value Learning
+- Q Learning / Value Learning / Value Neural Network
+- Policy Learning / Policy Neural Network
+   - Vanilla Proximal Gradient
+   - PPO
+   - DPO
+   - There are many other algorithms and to learn these I would highly recommend spending months with the [resource created by OpenAI](https://spinningup.openai.com/en/latest/index.html)
+- Action Critik - combining both Q learning and Value Learning
 
 
 Above we saw all the implementation using Neural Networks but earlier people used MDPs to model these instead of Neural Networks. Since MDPs were not scalable, Neural Networks became prominent. You can understand this here in this [video](https://www.youtube.com/watch?v=SgC6AZss478&list=PLs8w1Cdi-zvYviYYw_V3qe6SINReGF5M-&index=4) very clearly. 

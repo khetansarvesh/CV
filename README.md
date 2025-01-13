@@ -93,6 +93,21 @@ Note : In [NLP](https://docs.google.com/document/d/18uKePZSgFpufsPhpcLj0rSjsuFPh
     
 
 # **********  Deep Reinforcement Learning (RL) for Images  **********
+There are essentially 3 ways to use Neural Networks for Reinforcement Learning : 
+1. Q Learning / Value Learning / Value Neural Network
+2. Value Learning
+3. Action Critik - combining both Q learning and Value Learning
 
-Read more about this [here](https://github.com/khetansarvesh/CV/tree/main/reinforcement_learning)
 
+Above we saw all the implementation using Neural Networks but earlier people used MDPs to model these instead of Neural Networks. Since MDPs were not scalable, Neural Networks became prominent. You can understand this here in this [video](https://www.youtube.com/watch?v=SgC6AZss478&list=PLs8w1Cdi-zvYviYYw_V3qe6SINReGF5M-&index=4) very clearly. 
+
+But if you still want to learn more about how to use RL with MDPs I would recommend following courses to you (watch in the given sequence)
+- [Lectures from David Silver](https://www.davidsilver.uk/teaching/) (Google Deepmind)
+- [John Schulman](https://www.youtube.com/watch?v=PtAIh9KSnjo) (OpenAI)
+- [Google Deepmind x UCL Course](https://www.youtube.com/playlist?list=PLqYmG7hTraZDVH599EItlEWsUOsJbAodm)
+- [CS 285](https://www.youtube.com/watch?v=JHrlF10v2Og&list=PL_iWQOsE6TfURIIhCrlt-wj9ByIVpbfGc) (UCB)
+- [CS 234](https://www.youtube.com/watch?v=FgzM3zpZ55o&list=PLoROMvodv4rOSOPzutgyCTapiGlY2Nd8u) (Standford)
+- [IIT Madras](https://www.youtube.com/playlist?list=PLEAYkSg4uSQ0Hkv_1LHlJtC_wqwVu6RQX) Course
+- Multimodal RL (CMU)
+   - [Part 1](https://www.youtube.com/watch?v=OI02F2XEe_0&list=PL-Fhd_vrvisNup9YQs_TdLW7DQz-lda0G&index=17)
+   - [Part 2](https://www.youtube.com/watch?v=UsAgvMC5fRs&list=PL-Fhd_vrvisNup9YQs_TdLW7DQz-lda0G&index=18)

@@ -107,6 +107,7 @@ Above we saw all the implementation using Neural Networks but earlier people use
 
 But if you still want to learn more about how to use RL with MDPs I would recommend following courses to you (watch in the given sequence)
 - [Lectures from David Silver](https://www.davidsilver.uk/teaching/) (Google Deepmind)
+- [Deep RL Bootcamp](https://www.youtube.com/@aiprism1155/videos)
 - [John Schulman](https://www.youtube.com/watch?v=PtAIh9KSnjo) (OpenAI)
 - [Google Deepmind x UCL Course](https://www.youtube.com/playlist?list=PLqYmG7hTraZDVH599EItlEWsUOsJbAodm)
 - [CS 285](https://www.youtube.com/watch?v=JHrlF10v2Og&list=PL_iWQOsE6TfURIIhCrlt-wj9ByIVpbfGc) (UCB)

@@ -98,8 +98,8 @@ Note : In [NLP](https://docs.google.com/document/d/18uKePZSgFpufsPhpcLj0rSjsuFPh
 - [Q Learning / Value Learning](https://khetansarvesh.medium.com/q-learning-deep-reinforcement-learning-ff162e9aca18) By Google Deepmind : Seeing RL problem as Regression Problem
 - [Better Approach] [Policy Learning](https://khetansarvesh.medium.com/policy-learning-deep-reinforcement-learning-83fb6e5aa025) : seeing RL problem as Classification Problem
 - Actor Critic - combining both Q-Learning and Policy-Learning
-   - [PPO](https://iclr-blog-track.github.io/2022/03/25/ppo-implementation-details/?source=post_page-----83fb6e5aa025--------------------------------)
-   - [DPO](https://www.youtube.com/watch?v=hvGa5Mba4c8&t=31s) 
+   - Proximal Policy Optimization[PPO](https://iclr-blog-track.github.io/2022/03/25/ppo-implementation-details/?source=post_page-----83fb6e5aa025--------------------------------)
+   - Direct Preference Optimization[DPO](https://www.youtube.com/watch?v=hvGa5Mba4c8&t=31s) 
 
 Above we saw all the implementation using Neural Networks but earlier people used MDPs to model these instead of Neural Networks. Since MDPs were not scalable, Neural Networks became prominent. You can understand this scalability issuer with MDPs [here](https://www.youtube.com/watch?v=SgC6AZss478&list=PLs8w1Cdi-zvYviYYw_V3qe6SINReGF5M-&index=4) very clearly. But if you still want to learn more about how to use RL with MDPs I would recommend following courses to you (watch in the given sequence)
 - [Lectures from David Silver](https://www.davidsilver.uk/teaching/) (Google Deepmind)

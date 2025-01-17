@@ -96,8 +96,8 @@ Note : In [NLP](https://docs.google.com/document/d/18uKePZSgFpufsPhpcLj0rSjsuFPh
 
  There are essentially 3 ways to use Neural Networks for Reinforcement Learning : 
 - [Q Learning / Value Learning](https://khetansarvesh.medium.com/q-learning-deep-reinforcement-learning-ff162e9aca18) By Google Deepmind : Seeing RL problem as Regression Problem
-- [Better Approach Policy Learning](https://khetansarvesh.medium.com/policy-learning-deep-reinforcement-learning-83fb6e5aa025) : seeing RL problem as Classification Problem
-- [Best Approach] Actor Critic - combining both Q-Learning and Policy-Learning
+- [{Better Approach} Policy Learning](https://khetansarvesh.medium.com/policy-learning-deep-reinforcement-learning-83fb6e5aa025) : seeing RL problem as Classification Problem
+- {Best Approach} Actor Critic - combining both Q-Learning and Policy-Learning
    - Proximal Policy Optimization[PPO](https://iclr-blog-track.github.io/2022/03/25/ppo-implementation-details/?source=post_page-----83fb6e5aa025--------------------------------)
    - Direct Preference Optimization[DPO](https://www.youtube.com/watch?v=hvGa5Mba4c8&t=31s) 
 

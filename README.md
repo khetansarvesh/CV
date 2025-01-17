@@ -105,6 +105,3 @@ Above we saw all the implementation using Neural Networks but earlier people use
 - [CS 285](https://www.youtube.com/watch?v=JHrlF10v2Og&list=PL_iWQOsE6TfURIIhCrlt-wj9ByIVpbfGc) (UCB)
 - [CS 234](https://www.youtube.com/watch?v=FgzM3zpZ55o&list=PLoROMvodv4rOSOPzutgyCTapiGlY2Nd8u) (Standford)
 - [IIT Madras](https://www.youtube.com/playlist?list=PLEAYkSg4uSQ0Hkv_1LHlJtC_wqwVu6RQX) Course
-- Multimodal RL (CMU)
-   - [Part 1](https://www.youtube.com/watch?v=OI02F2XEe_0&list=PL-Fhd_vrvisNup9YQs_TdLW7DQz-lda0G&index=17)
-   - [Part 2](https://www.youtube.com/watch?v=UsAgvMC5fRs&list=PL-Fhd_vrvisNup9YQs_TdLW7DQz-lda0G&index=18)

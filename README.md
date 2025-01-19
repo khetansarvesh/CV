@@ -102,6 +102,4 @@ Note : In [NLP](https://docs.google.com/document/d/18uKePZSgFpufsPhpcLj0rSjsuFPh
 One of the best way to learn more about Deep RL is to use [this](https://spinningup.openai.com/en/latest/index.html) resource created by OpenAI. Above we saw all the implementation using Neural Networks but earlier people used MDPs to model these instead of Neural Networks. Since MDPs were not scalable, Neural Networks became prominent. You can understand this scalability issuer with MDPs [here](https://www.youtube.com/watch?v=SgC6AZss478&list=PLs8w1Cdi-zvYviYYw_V3qe6SINReGF5M-&index=4) very clearly. But if you still want to learn more about how to use RL with MDPs I would recommend following courses to you (watch in the given sequence)
 - [Lectures from David Silver](https://www.davidsilver.uk/teaching/) (Google Deepmind)
 - [Google Deepmind x UCL Course](https://www.youtube.com/@Google_DeepMind/courses)
-- [CS 285](https://www.youtube.com/watch?v=JHrlF10v2Og&list=PL_iWQOsE6TfURIIhCrlt-wj9ByIVpbfGc) (UCB)
-- [CS 234](https://www.youtube.com/watch?v=FgzM3zpZ55o&list=PLoROMvodv4rOSOPzutgyCTapiGlY2Nd8u) (Standford)
 - [IIT Madras](https://www.youtube.com/playlist?list=PLEAYkSg4uSQ0Hkv_1LHlJtC_wqwVu6RQX) Course

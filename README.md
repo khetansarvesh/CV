@@ -1,4 +1,4 @@
-# $\color{brown}{Digital\ Image\ Preprocessing}$
+# $\color{cyan}{Digital\ Image\ Preprocessing}$
 Here our aim is to enhance the image quality in the image dataset that we are dealing with. For a comprehensive list of datasets, refer to this [linkedin post](https://www.linkedin.com/feed/update/urn:li:activity:7269031439713656832/) by me. Following are few approaches that can be used :  
 
 1. Normalizing Image : Convert pixel values from 0-255 to 0-1 range
@@ -20,7 +20,7 @@ Here our aim is to enhance the image quality in the image dataset that we are de
 
 
 
-# $\color{yellow}{Representation\ Learning\ /\ Tokenization}$
+# $\color{cyan}{Representation\ Learning\ /\ Tokenization}$
 - [Non-Modeling Based Methods](https://khetansarvesh.medium.com/non-modelling-methods-for-image-representation-learning-5a3b80a31a29)
 - [Modeling Based Methods](https://www.google.com/url?q=https://khetansarvesh.medium.com/modelling-based-methods-for-image-representation-learning-48cd5f56ad0d&sa=D&source=docs&ust=1733758892238210&usg=AOvVaw1HeO_DRIuK6YLyDS-Ne3gT)
 
@@ -33,8 +33,7 @@ Here our aim is to enhance the image quality in the image dataset that we are de
 
 
 
-# **********        **********
-# $\color{yellow}{Non-Generative\ Downstream\ CV\ Tasks\ (Supervised\ CV)\}$
+# $\color{cyan}{Non-Generative\ Downstream\ CV\ Tasks\ (Supervised\ CV)\}$
 
 Note : In [NLP](https://docs.google.com/document/d/18uKePZSgFpufsPhpcLj0rSjsuFPhm6_GcjnRPOrJCog/edit?tab=t.0) we already saw when to use freeze learning / partial finetuning / complete finetuning, same logic also applies here!! 
 
@@ -77,8 +76,7 @@ Note : In [NLP](https://docs.google.com/document/d/18uKePZSgFpufsPhpcLj0rSjsuFPh
 
 
 
-
-# **********  Generative Downstream CV Tasks (UnSupervised CV)  **********
+# $\color{cyan}{Generative\ Downstream\ CV\ Tasks\ (UnSupervised\ CV)\}$
 
 1. [Style Transfer](https://khetansarvesh.medium.com/image2image-translation-task-588d134e9ee8) [Image2Image Translation]
 2. Depth Estimation
@@ -90,7 +88,7 @@ Note : In [NLP](https://docs.google.com/document/d/18uKePZSgFpufsPhpcLj0rSjsuFPh
         - c. [Depth Anything Model V2](https://depth-anything-v2.github.io/) (Late 2024, SOTA)
     
 
-# **********  Deep Reinforcement Learning (RL) for Images  **********
+# $\color{cyan}{Deep\ Reinforcement\ Learning\ (RL)}$
 > Model Free RL : There are essentially 3 ways to use Neural Networks for Model Free RL :
 > 1. [Q Learning / Value Learning](https://khetansarvesh.medium.com/q-learning-deep-reinforcement-learning-ff162e9aca18) By Google Deepmind : Seeing RL problem as Regression Problem
 > 2. {Better Approach} [Policy Learning](https://khetansarvesh.medium.com/policy-learning-deep-reinforcement-learning-83fb6e5aa025) : seeing RL problem as Classification Problem

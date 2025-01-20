@@ -1,7 +1,4 @@
 # $\color{yellow}{Digital\ Image\ Preprocessing}$
-
-
-
 Here our aim is to enhance the image quality in the image dataset that we are dealing with. For a comprehensive list of datasets, refer to this [linkedin post](https://www.linkedin.com/feed/update/urn:li:activity:7269031439713656832/) by me. Following are few approaches that can be used :  
 
 1. Normalizing Image : Convert pixel values from 0-255 to 0-1 range
@@ -24,9 +21,6 @@ Here our aim is to enhance the image quality in the image dataset that we are de
 
 
 # $\color{yellow}{Representation\ Learning\ /\ Tokenization}$
-
-# ******   /  ******
-
 - [Non-Modeling Based Methods](https://khetansarvesh.medium.com/non-modelling-methods-for-image-representation-learning-5a3b80a31a29)
 - [Modeling Based Methods](https://www.google.com/url?q=https://khetansarvesh.medium.com/modelling-based-methods-for-image-representation-learning-48cd5f56ad0d&sa=D&source=docs&ust=1733758892238210&usg=AOvVaw1HeO_DRIuK6YLyDS-Ne3gT)
 
@@ -39,7 +33,8 @@ Here our aim is to enhance the image quality in the image dataset that we are de
 
 
 
-# **********  Non-Generative Downstream CV Tasks (Supervised CV)  **********
+# **********        **********
+# $\color{yellow}{Non-Generative\ Downstream\ CV\ Tasks\ (Supervised\ CV)\}$
 
 Note : In [NLP](https://docs.google.com/document/d/18uKePZSgFpufsPhpcLj0rSjsuFPhm6_GcjnRPOrJCog/edit?tab=t.0) we already saw when to use freeze learning / partial finetuning / complete finetuning, same logic also applies here!! 
 

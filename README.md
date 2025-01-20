@@ -94,12 +94,11 @@ Note : In [NLP](https://docs.google.com/document/d/18uKePZSgFpufsPhpcLj0rSjsuFPh
 
 # **********  Deep Reinforcement Learning (RL) for Images  **********
 ```diff
-- text
+- Model Free RL : There are essentially 3 ways to use Neural Networks for Model Free RL :
 ```
-[Model Free RL] There are essentially 3 ways to use Neural Networks for Reinforcement Learning : 
-- [Q Learning / Value Learning](https://khetansarvesh.medium.com/q-learning-deep-reinforcement-learning-ff162e9aca18) By Google Deepmind : Seeing RL problem as Regression Problem
-- {Better Approach} [Policy Learning](https://khetansarvesh.medium.com/policy-learning-deep-reinforcement-learning-83fb6e5aa025) : seeing RL problem as Classification Problem
-- {Best Approach} [Actor Critic]() : combining both Q-Learning and Policy-Learning
+1. [Q Learning / Value Learning](https://khetansarvesh.medium.com/q-learning-deep-reinforcement-learning-ff162e9aca18) By Google Deepmind : Seeing RL problem as Regression Problem
+2. {Better Approach} [Policy Learning](https://khetansarvesh.medium.com/policy-learning-deep-reinforcement-learning-83fb6e5aa025) : seeing RL problem as Classification Problem
+3. {Best Approach} [Actor Critic]() : combining both Q-Learning and Policy-Learning
 
 One of the best way to learn more about Deep RL is to use [this](https://spinningup.openai.com/en/latest/index.html) resource created by OpenAI.
 

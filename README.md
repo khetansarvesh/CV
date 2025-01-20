@@ -93,7 +93,13 @@ Note : In [NLP](https://docs.google.com/document/d/18uKePZSgFpufsPhpcLj0rSjsuFPh
     
 
 # **********  Deep Reinforcement Learning (RL) for Images  **********
-
+```diff
+- text in red
++ text in green
+! text in orange
+# text in gray
+@@ text in purple (and bold)@@
+```
 [Model Free RL] There are essentially 3 ways to use Neural Networks for Reinforcement Learning : 
 - [Q Learning / Value Learning](https://khetansarvesh.medium.com/q-learning-deep-reinforcement-learning-ff162e9aca18) By Google Deepmind : Seeing RL problem as Regression Problem
 - {Better Approach} [Policy Learning](https://khetansarvesh.medium.com/policy-learning-deep-reinforcement-learning-83fb6e5aa025) : seeing RL problem as Classification Problem

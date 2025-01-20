@@ -90,14 +90,18 @@ Note : In [NLP](https://docs.google.com/document/d/18uKePZSgFpufsPhpcLj0rSjsuFPh
 
 # $\color{cyan}{Deep\ Reinforcement\ Learning\ (RL)}$
 
-There are many types of algorithms which can solve a given task using Deep RL : 
-1. Model Free RL Models :
+There are many types of Deep RL algorithms : 
+1. Model Free RL Algorithms :
+
    a. [Value Learning](https://khetansarvesh.medium.com/q-learning-deep-reinforcement-learning-ff162e9aca18)
+
    b. [Policy Learning](https://khetansarvesh.medium.com/policy-learning-deep-reinforcement-learning-83fb6e5aa025) 
+
    c. [Actor Critic / Advantage Actor Critic(A2C)]() : combining both Value-Learning and Policy-Learning
 
-2. Model Based RL Models : 
+2. Model Based RL Algorithms : 
    a. Dyna Algorithm
+
    b. Guided Policy Search Algorithm
 
 > [!IMPORTANT]

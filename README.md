@@ -1,6 +1,6 @@
 # $\color{green}{ Image Preprocessing}$
 
-# $\colorbox{green}{{\color{white}{Digital\ Image\ Preprocessing}}}$
+# $\color{green}{{\color{white}{Digital\ Image\ Preprocessing}}}$
 
 
 

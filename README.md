@@ -1,6 +1,4 @@
-# ********** Digital Image Preprocessing **********
-
-$\color{green}{test}$
+# $\color{green}{********** Digital Image Preprocessing **********}$
 
 
 Here our aim is to enhance the image quality in the image dataset that we are dealing with. For a comprehensive list of datasets, refer to this [linkedin post](https://www.linkedin.com/feed/update/urn:li:activity:7269031439713656832/) by me. Following are few approaches that can be used :  

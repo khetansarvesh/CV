@@ -1,4 +1,4 @@
-# $\color{yellow}{Digital\ Image\ Preprocessing}$
+# $\color{magenta}{Digital\ Image\ Preprocessing}$
 Here our aim is to enhance the image quality in the image dataset that we are dealing with. For a comprehensive list of datasets, refer to this [linkedin post](https://www.linkedin.com/feed/update/urn:li:activity:7269031439713656832/) by me. Following are few approaches that can be used :  
 
 1. Normalizing Image : Convert pixel values from 0-255 to 0-1 range

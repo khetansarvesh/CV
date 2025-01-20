@@ -91,8 +91,11 @@ Note : In [NLP](https://docs.google.com/document/d/18uKePZSgFpufsPhpcLj0rSjsuFPh
 # $\color{cyan}{Deep\ Reinforcement\ Learning\ (RL)}$
 Model Free RL : There are essentially 3 ways to use Neural Networks for Model Free RL :
 > 1. Value Learning : Seeing RL problem as Regression Problem
+>    
 >    a. [Q Learning](https://khetansarvesh.medium.com/q-learning-deep-reinforcement-learning-ff162e9aca18) : We design a Neural Network which learns a Q function which indirectly represents the policy
+>    
 >    b. V Learning : We design a Neural Network which learns a V function which indirectly represents the policy
+>    
 > 3. [Policy Learning](https://khetansarvesh.medium.com/policy-learning-deep-reinforcement-learning-83fb6e5aa025) : seeing RL problem as Classification Problem
 > 4. [Actor Critic / Advantage Actor Critic(A2C)]() : combining both Q-Learning and Policy-Learning
 

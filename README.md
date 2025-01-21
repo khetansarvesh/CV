@@ -91,18 +91,18 @@ Note : In [NLP](https://docs.google.com/document/d/18uKePZSgFpufsPhpcLj0rSjsuFPh
 # $\color{cyan}{Deep\ Reinforcement\ Learning\ (RL)}$
 
 There are many types of Deep RL algorithms : 
-> 1. <ins> Model Free RL Algorithms </ins> :
+1. <ins> Model Free RL Algorithms </ins> :
    - [Value Learning](https://khetansarvesh.medium.com/q-learning-deep-reinforcement-learning-ff162e9aca18)
    - [Policy Learning](https://khetansarvesh.medium.com/policy-learning-deep-reinforcement-learning-83fb6e5aa025)
    - [Actor Critic / Advantage Actor Critic(A2C)]() : combining both Value-Learning and Policy-Learning
 
-> 2. <ins> Model Based RL Algorithms </ins> : In model free RL algorithms we could solve the RL problem without learning state transition probabilities <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 100">
->     <text x="150" y="50" font-family="serif" font-size="30" fill="black"> P(sₜ₊₁|sₜ, aₜ) </text></svg>. But in these model based RL algorithms we will try to learn these state transition probabilities which will help > us predict correct actions for a given state. These state transition probabilities are also called transition dynamics / dynamics / models
+2. <ins> Model Based RL Algorithms </ins> : In model free RL algorithms we could solve the RL problem without learning state transition probabilities <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 100">
+     <text x="150" y="50" font-family="serif" font-size="30" fill="black"> P(sₜ₊₁|sₜ, aₜ) </text></svg>. But in these model based RL algorithms we will try to learn these state transition probabilities which will help  us predict correct actions for a given state. These state transition probabilities are also called transition dynamics / dynamics / models
 
    - Dyna Algorithm
    - Guided Policy Search Algorithm
   
-> 3. <ins> Inverse RL Algorithms </ins> : In both the above algorithms we designed our own scalar reward structures but in these algorithms we learn the reward structure automatically 
+3. <ins> Inverse RL Algorithms </ins> : In both the above algorithms we designed our own scalar reward structures but in these algorithms we learn the reward structure automatically 
 
 > [!IMPORTANT]
 > One of the best way to learn more about Deep RL is to use [this](https://spinningup.openai.com/en/latest/index.html) resource created by OpenAI.

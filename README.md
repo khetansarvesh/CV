@@ -92,8 +92,8 @@ Note : In [NLP](https://docs.google.com/document/d/18uKePZSgFpufsPhpcLj0rSjsuFPh
 
 There are many types of Deep RL algorithms : 
 1. <ins> Model Free RL Algorithms </ins> :
-   - [Value Learning](https://khetansarvesh.medium.com/q-learning-deep-reinforcement-learning-ff162e9aca18) : Methods based on value functions
-   - [Policy Learning](https://khetansarvesh.medium.com/policy-learning-deep-reinforcement-learning-83fb6e5aa025)
+   - [Value Learning](https://khetansarvesh.medium.com/q-learning-deep-reinforcement-learning-ff162e9aca18) : Methods wherein we learn the policy by learning a value function
+   - [Policy Learning](https://khetansarvesh.medium.com/policy-learning-deep-reinforcement-learning-83fb6e5aa025) : Methods wherein we learn the policy by learning the policy itself
    - [Actor Critic / Advantage Actor Critic(A2C)]() : combining both Value-Learning and Policy-Learning
 
 2. <ins> Model Based RL Algorithms </ins> : In model free RL algorithms we could solve the RL problem without learning state transition probabilities <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 100">

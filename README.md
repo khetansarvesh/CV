@@ -96,7 +96,7 @@ There are many types of Deep RL algorithms :
    - [Policy Learning](https://khetansarvesh.medium.com/policy-learning-deep-reinforcement-learning-83fb6e5aa025)
    - [Actor Critic / Advantage Actor Critic(A2C)]() : combining both Value-Learning and Policy-Learning
 
-2. <ins> Model Based RL Algorithms </ins> : 
+2. <ins> Model Based RL Algorithms </ins> : In model free RL algorithms we could solve the RL problem without formulating state transition probabilities i.e. probability of going from state S(t) to State S(t+1) when action A(t) is done in State S(t). But in these model based RL algorithms we will try to formulate these state transition probabilities too to solve the RL problem !!
    - Dyna Algorithm
    - Guided Policy Search Algorithm
   

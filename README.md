@@ -96,17 +96,14 @@ There are many types of Deep RL algorithms :
    - [Policy Learning](https://khetansarvesh.medium.com/policy-learning-deep-reinforcement-learning-83fb6e5aa025)
    - [Actor Critic / Advantage Actor Critic(A2C)]() : combining both Value-Learning and Policy-Learning
 
-2. <ins> Model Based RL Algorithms </ins> : In model free RL algorithms we could solve the RL problem without formulating state transition probabilities
-   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 100">
+2. <ins> Model Based RL Algorithms </ins> : In model free RL algorithms we could solve the RL problem without formulating state transition probabilities <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 100">
      <!-- Formula -->
      <text x="40" y="50" font-family="serif" font-size="30" fill="black">p(s₁)</text>
      <text x="100" y="40" font-family="serif" font-size="24" fill="black">T</text>
      <text x="120" y="50" font-family="serif" font-size="30" fill="black">∏</text>
-     <text x="150" y="50" font-family="serif" font-size="30" fill="black">π₀(aₜ|sₜ)p(sₜ₊₁|sₜ, aₜ)</text>
-     <text x="120" y="65" font-family="serif" font-size="20" fill="black">t=1</text>
-     
+     <text x="150" y="50" font-family="serif" font-size="30" fill="black">π₀(aₜ|sₜ)p(sₜ₊₁|sₜ, aₜ)</text>     
      <!-- Red circle around p(s_{t+1}|s_t, a_t) -->
-     <circle cx="350" cy="45" r="70" fill="none" stroke="red" stroke-width="2"/>
+     <circle cx="350" cy="45" r="70" fill="none" stroke="green" stroke-width="2"/>
    </svg>But in these model based RL algorithms we will try to formulate these state transition probabilities too to solve the RL problem !!
 
    - Dyna Algorithm

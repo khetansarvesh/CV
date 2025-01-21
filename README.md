@@ -100,7 +100,7 @@ There are many types of Deep RL algorithms :
    - Dyna Algorithm
    - Guided Policy Search Algorithm
   
-3. Inverse RL Algorithms : In both the above algorithms we designed our own scalar reward structures but in these algorithms we learn the reward structure automatically 
+3. <ins> Inverse RL Algorithms </ins> : In both the above algorithms we designed our own scalar reward structures but in these algorithms we learn the reward structure automatically 
 
 > [!IMPORTANT]
 > One of the best way to learn more about Deep RL is to use [this](https://spinningup.openai.com/en/latest/index.html) resource created by OpenAI.

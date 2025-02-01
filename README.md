@@ -94,7 +94,7 @@ There are many types of Deep RL algorithms :
 1. <ins> Model Free RL Algorithms </ins> :
    - [Value Learning](https://khetansarvesh.medium.com/q-learning-deep-reinforcement-learning-ff162e9aca18) : Methods wherein we learn the policy by learning a value function
    - [Policy Learning](https://khetansarvesh.medium.com/policy-learning-deep-reinforcement-learning-83fb6e5aa025) : Methods wherein we learn the policy by learning the policy itself
-   - [Actor Critic / Advantage Actor Critic(A2C)]() : combining both Value-Learning and Policy-Learning
+   - [Actor Critic / Advantage Actor Critic(A2C)](https://khetansarvesh.medium.com/actor-critic-deep-reinforcement-learning-7632d8337d07) : combining both Value-Learning and Policy-Learning
 
 2. <ins> Model Based RL Algorithms </ins> : In model free RL algorithms we could solve the RL problem without learning state transition probabilities <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 100">
      <text x="150" y="50" font-family="serif" font-size="30" fill="black"> P(sₜ₊₁|sₜ, aₜ) </text></svg>. But in these model based RL algorithms we will try to learn these state transition probabilities which will help  us predict correct actions for a given state. These state transition probabilities are also called transition dynamics / dynamics / models

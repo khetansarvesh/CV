@@ -103,7 +103,7 @@ There are many types of Deep RL algorithms :
 
 > [!IMPORTANT]
 > One of the best way to learn more about Deep RL is to use [this](https://spinningup.openai.com/en/latest/index.html) resource created by OpenAI.
-> Other great resource are these [lectures](https://www.youtube.com/@rail7462/playlists) from UCB and for implementation details you can use this [github repo](https://github.com/vwxyzjn/cleanrl)
+> Other great resource are these [lectures](https://www.youtube.com/@rail7462/playlists) from UCB and for implementation details you can use this [github repo](https://github.com/vwxyzjn/cleanrl).
 > Recently I also discovered [this](https://huggingface.co/learn/deep-rl-course/unit0/introduction) course from HF which is also a great start to Deep Reinforcement Learning
 
 

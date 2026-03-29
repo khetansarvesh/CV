@@ -71,7 +71,7 @@ Note : In [NLP](https://docs.google.com/document/d/18uKePZSgFpufsPhpcLj0rSjsuFPh
       b. Step 2 : Character Segmentation => Now for each of the text region, you need to segment out the character in that text. Refer image [here](https://github.com/khetansarvesh/CV/blob/main/notes/char_seg.png)
 
       c. Step 3 : Character Classification => Now for each segmented character you need to run a character classification model. Refer image [here](https://github.com/khetansarvesh/CV/blob/main/notes/char_class.png)
-    
+10. Action Prediction - This finds great application in playing games / Robotics
 
 
 
